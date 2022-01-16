@@ -1,0 +1,19 @@
+<apex:page controller="calculator">
+    <apex:form >
+       <apex:pageBlock >
+         Enter Va1ue1: <apex:inputText value="{!Value1}"/>
+          Enter Value2: <apex:inputText value="{!Value2}"/><br/>
+          </apex:pageblock>
+          <apex:pageblock id="cal">
+          Value1OutPut:<apex:OutputText value="{!Value1}" /><br/>
+          Value2OutPut:<apex:OutputText value="{!Value2}" /><br/>
+          Your Result :<apex:outputText value="{!OutputValue}"/>
+           <apex:pageBlockButtons location="bottom" >
+               <apex:commandButton value="Add" action="{!Add}" reRender="cal" />
+               <apex:commandButton value="Sub" action="{!Sub}" rerender="cal"/>
+               <apex:commandButton value="Mul" action="{!Mul}"  rerender="cal"/>
+               <apex:commandButton value="Div" action="{!Div}"  rerender="cal" />
+           </apex:pageBlockButtons>
+       </apex:pageBlock>
+    </apex:form>
+</apex:page>

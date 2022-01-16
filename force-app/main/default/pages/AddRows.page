@@ -1,0 +1,33 @@
+<apex:page controller="AddRows">
+    <apex:form >
+        
+        <apex:commandButton action="{!addingRow}" value="Add Row" rerender="pbblck"/>
+        <apex:commandButton action="{!delRow}" value="Delete Row" rerender="pbblck,pbblck1"/>
+        <apex:commandButton value="Display" action="{!toDisplay}" rerender="pbblck1"/>
+        
+        <apex:pageBlock id="pbblck">
+        <apex:pageblockTable value="{!wrapperList}" var="wrap" >
+            <apex:column >
+                <apex:inputText value="{!wrap.field1}" />
+            </apex:column>
+            <apex:column >
+                <apex:inputText value="{!wrap.field2}"/>
+            </apex:column>
+           
+        </apex:pageblockTable>
+        </apex:pageBlock>
+
+        <apex:pageBlock id="pbblck1">
+
+        <apex:pageblockTable value="{!wrapperList}" var="wrap" rendered="{!dispBoolean}" >
+            <apex:column value="{!wrap.field1}">
+                
+            </apex:column>
+            <apex:column value="{!wrap.field2}">
+                
+            </apex:column>
+           
+        </apex:pageblockTable>
+        </apex:pageBlock>
+    </apex:form> 
+</apex:page>

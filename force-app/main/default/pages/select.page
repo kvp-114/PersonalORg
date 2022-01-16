@@ -1,0 +1,11 @@
+<apex:page standardController="account">
+    <apex:form >
+    <apex:pageBlock tabStyle="selecttab__tab" >
+        <apex:selectList multiselect="true">
+            <apex:selectOption itemvalue="red" itemlabel="red"></apex:selectOption>
+            <apex:selectOption itemvalue="green" itemlabel="green"></apex:selectOption>
+            <apex:selectOption itemvalue="white" itemlabel="white"></apex:selectOption>
+        </apex:selectList>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

@@ -1,0 +1,16 @@
+<apex:page controller="mycontroller123">
+<script>
+    function test1(a){
+    alert(a);
+    function1(a);
+    }
+</script>
+
+  <apex:form id="myform">
+      <apex:inputtext id="my" onchange="test1('1');"/>
+      <apex:actionFunction name="function1"  action="{!abcd}" reRender="myform">
+      <apex:param name="x1" assignTo="{!x}" value=""/>
+  </apex:actionfunction>
+  </apex:form>
+  
+</apex:page>

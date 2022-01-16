@@ -1,0 +1,12 @@
+<apex:page controller="WrapperClass">
+  <apex:form >
+      <apex:pageBlock id="pb">
+          <apex:repeat value="{!wrapList}" var="wrap"> 
+              <apex:inputCheckbox value="{!wrap.wrapcheck}" disabled="{!IF(wrap.wrapcheck,true,false)}"/>
+              <apex:outputText value="{!wrap.mycumobj.name}"></apex:outputText><br/>
+          </apex:repeat>
+          <apex:commandButton value="Display" action="{!Display}" rerender="pb"/>
+      </apex:pageBlock>
+  </apex:form>
+  
+</apex:page>

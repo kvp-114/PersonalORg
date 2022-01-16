@@ -1,0 +1,277 @@
+<apex:page sidebar="false" standardStylesheets="false">
+ 
+<html>
+<head>
+    
+    <style>
+    html {  font-family: Arial, Helvetica, sans-serif; }
+    #tabContainer {display: none;}
+    :root *>.k-button-group .k-tool-icon, :root *>.k-icon, :root *>.k-sprite {
+    vertical-align: middle; margin-top: 4px !important;
+    }
+    ul li, ol li { margin-left: 0em; padding-left: 0;}
+    </style>
+    <title>Hirerchical irerchical Kendo grid using JSON data</title>
+    <apex:stylesheet value="{!URLFOR($Resource.KendoLibrary, '/CSS/kendo.common.min.css')}"/>
+    
+    <!-- USe these theme names in below css link default,black,blueopal,bootstrap,flat,highcontrast,metro,metroblack,moonlight,silver,uniform 
+    <link rel="stylesheet" href="resource/themes/kendo.black.min.css" /> -->
+    <link id="kendoTheme" rel="stylesheet" href="{!URLFOR($Resource.KendoLibrary, '/CSS/themes/kendo.default.min.css')}"/>
+    
+    <apex:includeScript value="{!URLFOR($Resource.KendoLibrary, '/JS/jquery.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.KendoLibrary, '/JS/kendo.all.min.js')}"/>
+   <!-- <script src="resource/jquery.min.js"></script>
+    <script src="resource/kendo.all.min.js"></script> -->
+</head>
+<body>
+        <select id="theme"></select>
+        <div id="hirerchicalView">
+        <!-- Below DIV for implement Main Grid -->
+            <div id="grid"></div>
+            <script type="text/x-kendo-template" id="template">
+                <div class="tabstrip">
+                    <ul>
+                        <li class="k-state-active">
+                           Orders
+                        </li>
+                    </ul>
+                    <div>
+                        <div class="orders"></div>
+                    </div>
+                </div>
+
+            </script>
+            <script>
+            /* Create/Define a variable for result JSON data*/
+                var naidu = {
+                  "status": "success",
+                  "message": {
+                    "Response": [
+                      [
+                        {
+                          "customerid": "1178424",
+                          "orderid": "1180141",
+                          "orderdate": "2016-05-09 19:45:37",
+                          "orderstatus": "14",
+                          "paymentmode": "Payu Debit Card",
+                          "paymentstatus": "completed",
+                          "totalnetvalue": "1398.00",
+                          "vendorname": "Trendin",
+                          "paymentsource": "payu",
+                          "orderdetailInfo": [
+                                {
+                                "orderid":"1180141",
+                                "orderLIid":"69078",
+                                "productname":"Blue Essential Striped Cotton Polo T Shirt ",
+                                "productspecification":" Color : Blue, Size :L",
+                                "productimage":"img"
+                                },
+                                {
+                                    "orderid":"1180139",
+                                    "orderLIid":"63875",
+                                    "productname":"Grey Stretchable Formal Trousers ",
+                                    "productspecification":" Color : Grey, Size :34",
+                                    "productimage":"img"
+                                },{
+                              "orderid": "1180143",
+                              "orderLIid": "69078",
+                              "productname": "Blue Essential Striped Cotton Polo T Shirt ",
+                              "productspecification": " Color : Blue, Size :L",
+                              "productimage": ""
+                            },{
+                              "orderid": "1180145",
+                              "orderLIid": "69078",
+                              "productname": "Blue Essential Striped Cotton Polo T Shirt ",
+                              "productspecification": " Color : Blue, Size :L",
+                              "productimage": ""
+                            },{
+                              "orderid": "1180147",
+                              "orderLIid": "69078",
+                              "productname": "Blue Essential Striped Cotton Polo T Shirt ",
+                              "productspecification": " Color : Blue, Size :L",
+                              "productimage": ""
+                            },{
+                              "orderid": "1180147",
+                              "orderLIid": "69078",
+                              "productname": "Blue Essential Striped Cotton Polo T Shirt ",
+                              "productspecification": " Color : Blue, Size :L",
+                              "productimage": ""
+                            },{
+                              "orderid": "1180140",
+                              "orderLIid": "69078",
+                              "productname": "Blue Essential Striped Cotton Polo T Shirt ",
+                              "productspecification": " Color : Blue, Size :L",
+                              "productimage": ""
+                            },{
+                              "orderid": "1180141",
+                              "orderLIid": "69078",
+                              "productname": "Blue Essential Striped Cotton Polo T Shirt ",
+                              "productspecification": " Color : Blue, Size :L",
+                              "productimage": ""
+                            },{
+                              "orderid": "1180141",
+                              "orderLIid": "69078",
+                              "productname": "Blue Essential Striped Cotton Polo T Shirt ",
+                              "productspecification": " Color : Blue, Size :L",
+                              "productimage": ""
+                            },
+                            {
+                              "orderid": "1180139",
+                              "orderLIid": "63875",
+                              "productname": "Grey Stretchable Formal Trousers ",
+                              "productspecification": " Color : Grey, Size :34",
+                              "productimage": ""
+                            }
+                          ]
+                        },
+                        {
+                          "customerid": "1178424",
+                          "orderid": "1180139",
+                          "orderdate": "2016-05-09 19:36:59",
+                          "orderstatus": "14",
+                          "paymentmode": "Payu Debit Card",
+                          "paymentstatus": "img",
+                          "totalnetvalue": "2199.00",
+                          "vendorname": "Trendin",
+                          "paymentsource": "payu",
+                          "orderdetailInfo": [
+                            {
+                              "orderid": "1180141",
+                              "orderLIid": "69078",
+                              "productname": "Blue Essential Striped Cotton Polo T Shirt ",
+                              "productspecification": " Color : Blue, Size :L",
+                              "productimage": ""
+                            },
+                            {
+                              "orderid": "1180139",
+                              "orderLIid": "63875",
+                              "productname": "Grey Stretchable Formal Trousers ",
+                              "productspecification": " Color : Grey, Size :34",
+                              "productimage": ""
+                            }
+                          ]
+                        },
+                        {
+                          "customerid": "1178424",
+                          "orderid": "1180139",
+                          "orderdate": "2016-05-09 19:36:59",
+                          "orderstatus": "14",
+                          "paymentmode": "Payu Debit Card",
+                          "paymentstatus": "img",
+                          "totalnetvalue": "2199.00",
+                          "vendorname": "Trendin",
+                          "paymentsource": "payu"
+                        }
+                      ]
+                    ],
+                    "log_reference": 144
+                  }
+                }
+                /* Below function for Creating Kendo Main/Parent grid using JSON*/
+                $(document).ready(function() {
+                    var element = $("#grid").kendoGrid({
+                    /*DataSource for fetching data to Parent Kendo grid*/
+                        dataSource: {
+                            data : naidu.message.Response[0],
+                            pageSize: 5
+                        },
+                       /* height: 600, */
+                        sortable: true,
+                        pageable: {pageSizes: [5, 10, 25, 100]},
+                        detailTemplate: kendo.template($("#template").html()),
+                        /*below is function for creating child grids*/
+                        detailInit: detailInit,
+                        /*Below method is for first parent child grid is open status */
+                        dataBound: function() {
+                            this.expandRow(this.tbody.find("tr.k-master-row").first());
+                        },
+                        /*Parent grid display columns list*/
+                        columns: [
+                            {field: "customerid",title: "Customer Id",width: "110px"},
+                            {field: "orderid",title: "Order Id",width: "110px"},
+                            {field: "orderdate",title: "Order Date"},
+                            {field: "orderstatus",title: "Order Status" },
+                            {field: "paymentmode", title: "Payment Mode"},
+                            {field: "paymentstatus",title: "Payment Status"},
+                            {field: "totalnetvalue",title: "Total NetValue"},
+                            {field: "vendorname",title: "Vendor Name"},
+                            {field: "paymentsource", title: "Payment Source" }
+                        ]
+                    });
+                    var a= "{!URLFOR($Resource.KendoLibrary, '/CSS/themes/kendo.default.min.css')}";
+                    $('#kendoStyle').attr('href', a);
+                });
+                
+                /*This function is for creating Child gtrids using JSON*/
+                   function detailInit(e) {
+                       var detailRow = e.detailRow;
+                        detailRow.find(".tabstrip").kendoTabStrip({
+                            animation: {
+                                open: { effects: "fadeIn" }
+                            }
+                        });
+                       //if(e.data.orderdetailInfo){
+                        detailRow.find(".orders").kendoGrid({
+                        /*DataSource for fetching data to Child Kendo grid*/
+                            dataSource:{
+                                data: e.data.orderdetailInfo,
+                                filterable: true,
+                                pageSize: 5
+                                /*This is for filtering data form JSON , In our scenario we are not using */
+                               /* filter: { field: "orderid", operator: "eq", value: e.data.orderid } */
+                            },
+                            scrollable: false,
+                            sortable: true,
+                             pageable: { pageSizes: [5, 10, 25, 100] },
+                            /*Child grid display columns list*/
+                            columns: [
+                                {field: "orderid",title: "Order Id"},
+                                {field: "orderLIid",title:"Order LIid"},
+                                {field: "productname",title:"Product Name"},
+                                {field: "productspecification",title:"Product Specification"},
+                                {field: "productimage",title:"Product Image"}
+                            ]
+                        });
+                    //}
+                }
+               /* function detailInit1(e){
+                    if(e.data.orderdetailInfo){
+                        detailInit(e);
+                    }
+                }
+                function imageTemplate(value)
+                {
+                    if (value)
+                        return '<img style="height:100px" src='+ value +' ></img>';
+                    else
+                        return '<p>Product Image not found</p>';
+                } */
+                
+                $("#theme").kendoDropDownList({
+                        filter: "contains",
+                        dataTextField: "text",
+                        dataValueField: "value",
+                        dataSource: [
+                            {text: "Theme: Default", value: "default"},
+                            {text: "Theme: Black", value: "black"},
+                            {text: "Theme: BlueOpal", value: "blueopal"},
+                            {text: "Theme: Bootstrap", value: "bootstrap"},
+                            {text: "Theme: Flat", value: "flat"},
+                            {text: "Theme: HighContrast", value: "highcontrast"},
+                            {text: "Theme: Metro", value: "metro"},
+                            {text: "Theme: MetroBlack", value: "metroblack"},
+                            {text: "Theme: MoonLight", value: "moonlight"},
+                            {text: "Theme: Silver", value: "silver"},
+                            {text: "Theme: Uniform", value: "uniform"}
+                        ]
+                });
+                
+                $("#theme").on("change", function(){
+                    var a = "{!URLFOR($Resource.KendoLibrary, '/CSS/themes/kendo." + $(this).val() + ".min.css')}";
+                    $('#kendoTheme').attr('href', a);
+                });
+            </script>
+        </div>
+</body>
+</html>
+</apex:page>

@@ -1,0 +1,53 @@
+<apex:page controller="Jquery_table">
+    <apex:includeScript value="{!URLFOR($Resource.smartpaginator, 'jquery-1.4.4.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.smartpaginator, 'smartpaginator.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.smartpaginator, 'smartpaginator.css')}"/>
+    <style>
+        .green{
+                background-color: #4f7305;
+            }
+        .green.normal{
+                background-color: #588500;
+                color: White;
+                border: solid 1px #5f9000;
+            }
+        .green.active{
+                background-color: #344C00;
+                color: #F8EB00;
+                border: solid 1px #5f9000;
+            }
+        .green .btn{
+                background-color: #588500;
+                color: White;
+                border: solid 1px #5f9000;
+            }
+    </style>
+    <head>
+    <script type="text/javascript">
+        $(document).ready(function() {
+ 
+            
+            $('#tableid').smartpaginator({ totalrecords: 100, recordsperpage: 5, initval:0 , next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'green', onchange: onChange
+ 
+            });
+ 
+            function onChange(newPageValue) {
+                alert(newPageValue);
+            }
+        });
+    </script>
+</head>
+<apex:form >
+<div id="smart-paginator">
+    <table id="tableid">
+        <tr><td>vijay</td></tr>
+        <tr><td>vijay</td></tr>
+        <tr><td>vijay</td></tr>
+        <tr><td>vijay</td></tr>
+        <tr><td>vijay</td></tr>
+        <tr><td>vijay</td></tr>
+    </table>
+    </div>
+  
+</apex:form>
+</apex:page>

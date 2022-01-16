@@ -1,0 +1,13 @@
+<apex:page controller="interviewone" sidebar="false" >
+<apex:form >
+<apex:sectionheader title="interview one"/>
+    <apex:pageblock title=" all accounts" tabStyle="accounttable__tab"> 
+        <apex:pageblockTable value="{!listaccounts}" var="a">
+            <apex:column value="{!a.name}"/>
+            <apex:column value="{!a.billingstate}"/>
+            <apex:column value="{!a.phone}"/>
+            <apex:column value="{!a.website}"/>
+        </apex:pageblockTable>
+    </apex:pageblock>
+</apex:form>
+</apex:page>

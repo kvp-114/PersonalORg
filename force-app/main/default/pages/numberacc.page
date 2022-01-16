@@ -1,0 +1,13 @@
+<apex:page standardController="Account" recordSetVar="accounts" tabstyle="account" sidebar="false">
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!accounts}" var="a">
+            <apex:column value="{!a.name}" width="5%"/>
+            <apex:column value="{!a.Number__c}" width="5%" />
+            <apex:column >
+                <apex:outputText value="{0, number}">
+                       <apex:param value="{!a.Number__c}" />
+                 </apex:outputText>
+            </apex:column>
+         </apex:pageBlockTable>
+     </apex:pageBlock>
+</apex:page>

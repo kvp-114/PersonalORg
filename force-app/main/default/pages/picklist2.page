@@ -1,0 +1,42 @@
+<apex:page Standardcontroller="Office_Location__c" extensions="sampleCon123">
+    
+    <apex:form id="myform">
+        <apex:variable value="{!1}" var="x"/>
+        <table>
+        <apex:repeat value="{!listValues}" var="lv">
+        <tr>
+        <td>
+         <b><apex:outputLabel value="Name: "/> </b>
+         </td>
+         <td>
+        <apex:inputField value="{!lv.office.Name}"/>
+        </td>
+        <td id="selectId{!round(x,0)}">
+            <apex:selectList value="{!lv.selectItem}" size="1" style="width:100px" id="selectId" onchange="function1('{!round(x,0)}');">
+                <apex:selectoptions value="{!lv.selectopp}" />
+            </apex:selectList><br/>
+            <apex:variable value="{!x+1}" var="x"/>
+         </td>
+         </tr>   
+        </apex:repeat>
+        </table>
+        <apex:commandButton value="Add" action="{!addAction}" reRender="myform" />
+        <apex:commandButton value="delete" action="{!delAction}" reRender="myform"/>
+        <apex:actionFunction name="myAction" action="{!pickListAction}" reRender="myform"/>
+    </apex:form>
+    <script>
+        function function1(x){
+        var x1=x-1;
+       
+       
+            var namevalue= document.getElementById('j_id0:myform:j_id3:'+x1+':j_id7').value.length;
+            alert(namevalue);
+            if(namevalue==0){
+               document.getElementById('j_id0:myform:j_id3:'+x1+':selectId').value='';
+                alert(namevalue);
+            }
+          myAction();  
+        }
+       
+    </script>
+</apex:page>

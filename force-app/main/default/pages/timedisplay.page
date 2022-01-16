@@ -1,0 +1,8 @@
+<apex:page >
+  
+  <apex:pageblock >
+       <apex:outputText value="{0,date,yyyyMMdd'T'HHmmss'Z'}">
+          <apex:param name="dates" value="{!DATETIMEVALUE(now())}"/>
+      </apex:outputText>
+  </apex:pageblock>
+</apex:page>

@@ -1,0 +1,20 @@
+<apex:page showHeader="true" controller="MathCls1">
+<apex:pagemessages id="errmsg"/>
+<apex:form id="fm">
+<apex:pageBlock >
+ 
+        
+<apex:outputText >Enter a Value1</apex:outputText>
+<apex:inputText value="{!num1}"/><br/>
+<apex:outputText >Enter a Value2</apex:outputText>
+<apex:inputtext value="{!num2}"/><br/><br/>
+<apex:outputText >Result</apex:outputText>&nbsp;&nbsp;&nbsp;
+<apex:outputText value="{!Result}" label="result" id="op"/><br/>
+</apex:pageBlock>
+
+<apex:commandButton value="Add" action="{!add}" reRender="fm,errmsg"/>&nbsp;&nbsp;
+<apex:commandButton value="Sub" action="{!Sub}" reRender="fm"/>&nbsp;&nbsp;
+<apex:commandButton value="Mul" action="{!Mul}" reRender="op"/>&nbsp;&nbsp;
+<apex:commandButton value="Div" action="{!Div}" reRender="op"/>
+ </apex:form>
+</apex:page>

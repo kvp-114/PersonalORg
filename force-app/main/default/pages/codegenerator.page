@@ -1,0 +1,31 @@
+<apex:page standardController="Account"> 
+    <apex:sectionHeader title="Account Edit" subtitle="{!Account.name}"/> 
+    <apex:form > 
+        <apex:pageBlock title="Account Edit" mode="edit"> 
+            <apex:pageBlockButtons location="top"> 
+                <apex:commandButton value="Save" action="{!save}"/> 
+                <apex:commandButton value="Save & New" action="{!save}" /> 
+                <apex:commandButton value="Cancel" action="{!cancel}"/> 
+            </apex:pageBlockButtons> 
+            <apex:pageBlockButtons location="bottom">
+                 <apex:commandButton value="Save" action="{!save}"/> 
+                 <apex:commandButton value="Save & New" action="{!save}" /> 
+                 <apex:commandButton value="Cancel" action="{!cancel}"/> 
+             </apex:pageBlockButtons> 
+         <apex:pageBlockSection title="Account Information" columns="2"> 
+         <apex:inputField value="{!Account.OwnerId}" required="false"/> 
+         <apex:inputField value="{!Account.Rating}" required="false"/> 
+         <apex:inputField value="{!Account.Name}" required="true"/> <apex:inputField value="{!Account.Phone}" required="false"/> 
+         <apex:inputField value="{!Account.ParentId}" required="false"/> 
+         <apex:inputField value="{!Account.Fax}" required="false"/> 
+         <apex:inputField value="{!Account.AccountNumber}" required="false"/> 
+         <apex:inputField value="{!Account.Website}" required="false"/> 
+         <apex:inputField value="{!Account.Site}" required="false"/> 
+         <apex:inputField value="{!Account.TickerSymbol}" required="false"/> 
+         <apex:inputField value="{!Account.Type}" required="false"/>
+          <apex:inputField value="{!Account.Ownership}" required="false"/> 
+          <apex:inputField value="{!Account.Industry}" required="false"/> 
+          <apex:inputField value="{!Account.NumberOfEmployees}" required="false"/> 
+          <apex:inputField value="{!Account.AnnualRevenue}" required="false"/> 
+          <apex:inputField value="{!Account.Sic}" required="false"/> 
+          <apex:inputField value="{!Account.numlocations__c}" required="false"/> <apex:inputField value="{!Account.City__c}" required="false"/> <apex:inputField value="{!Account.Number__c}" required="false"/> <apex:inputField value="{!Account.interested_technologies__c}" required="false"/> <apex:inputField value="{!Account.Total_Opportunity_Amount__c}" required="false"/> <apex:inputField value="{!Account.Product_Names__c}" required="false"/> </apex:pageBlockSection> <apex:pageBlockSection title="Address Information" columns="2"> <apex:inputField value="{!Account.BillingStreet}" required="false"/> <apex:inputField value="{!Account.ShippingStreet}" required="false"/> <apex:inputField value="{!Account.BillingCity}" required="false"/> <apex:inputField value="{!Account.ShippingCity}" required="false"/> <apex:inputField value="{!Account.BillingState}" required="false"/> <apex:inputField value="{!Account.ShippingState}" required="false"/> <apex:inputField value="{!Account.BillingPostalCode}" required="false"/> <apex:inputField value="{!Account.ShippingPostalCode}" required="false"/> <apex:inputField value="{!Account.BillingCountry}" required="false"/> <apex:inputField value="{!Account.ShippingCountry}" required="false"/> </apex:pageBlockSection> <apex:pageBlockSection title="Additional Information" columns="2"> <apex:inputField value="{!Account.CustomerPriority__c}" required="false"/> <apex:inputField value="{!Account.SLA__c}" required="false"/> <apex:inputField value="{!Account.SLAExpirationDate__c}" required="false"/> <apex:inputField value="{!Account.SLASerialNumber__c}" required="false"/> <apex:inputField value="{!Account.NumberofLocations__c}" required="false"/> <apex:inputField value="{!Account.UpsellOpportunity__c}" required="false"/> <apex:inputField value="{!Account.Active__c}" required="false"/> </apex:pageBlockSection> <apex:pageBlockSection title="Description Information" columns="1"> <apex:inputField value="{!Account.Description}" required="false"/> </apex:pageBlockSection> </apex:pageBlock> </apex:form> </apex:page>

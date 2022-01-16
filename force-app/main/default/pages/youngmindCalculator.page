@@ -1,0 +1,10 @@
+<apex:page controller="youngmindCalculator">
+    <apex:form >
+        <apex:pageBlock id="pblck">
+        value1 : <apex:inputText value="{!value1}"/><br/>
+        Value2 : <apex:inputText value="{!value2}"/><br/>
+        output : <apex:outputText value="{!output}"/> <br/>
+        <apex:commandButton value="add" action="{!addition}" reRender="pblck"/>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,18 @@
+<apex:page standardController="contact" recordSetVar="contacts" extensions="clone"> 
+ <apex:form >
+     <apex:pageblock >
+     <apex:variable value="{!1}" var="v"/>
+     <apex:repeat value="{!cmap}" var="c">
+         <apex:inputfield value="{!c.lastname}"/>
+        <br/>
+         <apex:repeat value="{!cmap[c]}"  var="cs">
+             <apex:inputfield value="{!cs.status}"/>  
+             <br/>           
+         </apex:repeat> 
+         <br/>       
+         <apex:variable value="{!v+1}" var="v"/> 
+     </apex:repeat>
+     <apex:commandButton value="save" action="{!save1}" />
+     </apex:pageblock>
+  </apex:form>   
+</apex:page>

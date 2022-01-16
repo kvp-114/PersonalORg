@@ -1,0 +1,7 @@
+<apex:page controller="my">
+<apex:form >
+    <apex:pageblock >
+        <apex:inputField value="{!li.name}"/>
+    </apex:pageblock>
+</apex:form>
+</apex:page>

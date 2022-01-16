@@ -1,0 +1,27 @@
+<apex:page standardController="Opportunity" recordSetVar="opportunities" sidebar="false">
+<apex:form >
+<apex:pageBlock >
+    <table>
+        <tr>
+            <td width="30%"><b> Account Name </b> </td>
+            <td width ="30%"> <b>Opportunity Name </b></td>
+            <td width="30%"> <b>stage name</b> </td>
+        </tr>
+        <apex:repeat value="{!opportunities}" var="op">
+            
+            <tr>
+                <td width="30%"> <apex:outputField value="{!op.Account.name}" /></td>
+                <td width="30%"> <apex:inputField value="{!op.Name}" required="true"/> </td>
+                <td width="30%"> <apex:inputfield value="{!op.StageName}" /> </td>
+            </tr>
+            
+        </apex:repeat>
+    </table>
+    <apex:pageblockButtons > 
+    <apex:commandButton value="save" action="{!save}" />
+    <apex:commandbutton value="cancel" action="{!cancel}"/>
+    </apex:pageblockButtons>
+    </apex:pageBlock>
+</apex:form>    
+  
+</apex:page>

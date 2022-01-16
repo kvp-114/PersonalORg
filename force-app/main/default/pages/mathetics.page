@@ -1,0 +1,13 @@
+<apex:page controller="matheticsExtension">
+    <apex:pagemessages id="errorMsg"/> 
+    <apex:form id="myForm">
+        Value1: <apex:inputtext value="{!value1}"/><br/>
+        Value2: <apex:inputtext value="{!value2}"/><br/>
+        OutPut: <apex:inputtext value="{!output}"/><br/>
+        <apex:commandButton value="ADD" action="{!addition}" reRender="myForm"/>
+        <apex:commandButton value="SUB" action="{!Subtraction}" reRender="myForm"/>
+        <apex:commandButton value="MUL" action="{!Multiplication }" reRender="myForm"/>
+        <apex:commandButton value="DIV" action="{!Division}" reRender="myForm,errorMsg"/>
+    </apex:form>
+  
+</apex:page>

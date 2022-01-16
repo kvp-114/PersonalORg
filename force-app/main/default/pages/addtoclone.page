@@ -1,0 +1,15 @@
+<apex:page id="pg" controller="myclone">
+
+ <script type='text/javascript' src='http://code.jquery.com/jquery.min.js'></script>
+
+  <apex:form id="myform">
+      <apex:pageBlock id="pb">
+          <apex:commandButton StyleClass="rbutton" action="{!addtoclone}"  image="{!URLFOR($Resource.Buttonimage)}"  id="clonebutton" disabled="true"  rerender="pb" />
+              
+          
+           <apex:commandButton value="Remove" StyleClass="rbutton" action="{!addtoclone}"  image="{!URLFOR($Resource.removebutton)}"  id="remove"  rerender="pb"/>
+          
+      </apex:pageBlock>
+  </apex:form>
+  
+</apex:page>

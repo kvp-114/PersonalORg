@@ -1,0 +1,13 @@
+<apex:page standardController="Account" extensions="action1">
+    <apex:form id="myform">
+        <apex:outputPanel id="thepanel">
+            <apex:inputfield value="{!account.type}">
+                <apex:actionSupport event="onchange" action="{!abcdef}" rerender="myform"/>
+            </apex:inputfield>
+        </apex:outputPanel>
+        <apex:outputPanel id="thepanel1" rendered="{!pickvalue}" >
+                hi this is vijay
+        </apex:outputPanel>
+    </apex:form>
+ 
+</apex:page>

@@ -1,0 +1,5 @@
+<apex:page >
+<Script>
+   alert('//');
+</script>
+</apex:page>

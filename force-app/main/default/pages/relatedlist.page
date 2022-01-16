@@ -1,0 +1,24 @@
+<!--<apex:page Controller="RelatedListClass" >
+  
+  
+  
+      <apex:inputFile value="{!attachBody}" fileName="{!attach.name}" contentType="{!attach.ContentType}"/>
+      <apex:form >
+          <apex:commandButton value="   Done   " action="{!AttachmentBodyCheck}" />
+      </apex:form>
+      
+          
+      
+  
+</apex:page>-->
+
+
+<apex:page controller="RelatedListClass">  
+  <apex:sectionHeader title="Visualforce Example" subtitle="Attachment Upload Example"/>
+<apex:relatedList list="CombinedAttachments" subject="{!acc}" />
+  <apex:form >
+    <apex:pageMessages />
+        <apex:commandButton action="{!upload}" value="Save"/>
+        <apex:inputFile value="{!attach.body}" filename="{!attach.name}" id="file"/>
+  </apex:form>
+</apex:page>

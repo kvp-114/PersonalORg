@@ -1,0 +1,10 @@
+<apex:page standardController="account">
+  
+    <apex:form >
+        <apex:pageBlock mode="inlineedit">
+            <apex:outputText value="{!account.AccountNumber}"/>
+        </apex:pageBlock>
+    
+    </apex:form>  
+  
+</apex:page>

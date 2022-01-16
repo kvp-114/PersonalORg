@@ -1,0 +1,25 @@
+<apex:page controller="sampleExtension" action="{!actionMethod}">
+    <script>
+        function displayText(){
+            display();
+        }
+        function changingPickValue(){
+            changePick();
+        }
+    </script>
+    
+    <apex:form id="myForm">
+    <apex:actionfunction Name="changePick" action="{!displayPick}" rerender="myForm"/>
+    <!--<apex:actionfunction Name="display" action="{!displayAction}" rerender="panelid"/>-->
+       Give some value: <apex:inputText value="{!inputtext}" onmouseout="displayText()" /><br/>
+       <apex:outputpanel id="panelid">
+       <apex:outputtext value="Success!!!!!!!!!!!!" id="opttextId" rendered="{!displayboolean}"/>
+       </apex:outputpanel><br/>
+       <apex:selectList value="{!selectedItem}" size="1" multiselect="true" onchange="changingPickValue()">
+           <apex:selectOptions value="{!options}">
+           </apex:selectOptions>
+       </apex:selectList>
+       
+    </apex:form>
+  
+</apex:page>

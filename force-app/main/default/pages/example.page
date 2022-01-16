@@ -1,0 +1,29 @@
+<apex:page Controller="custom" >
+<apex:form >
+    <apex:pageBlock rendered="{!exp1}">
+       <apex:pageBlockTable value="{!my}" var="m">
+           
+           <apex:column value="{!m.mycustoname__c}"/>
+       </apex:pageBlockTable>
+       
+           <apex:commandButton action="{!update1}" value="update" />
+       
+    </apex:pageBlock>
+    
+    <apex:pageBlock rendered="{!exp2}">
+        <apex:pageBlockSection >
+            <apex:inputField value="{!c.mycustoname__c}"/>
+            <apex:inputField value="{!c.amount__c}"/>
+        </apex:pageBlockSection>
+    <apex:pageBlockbuttons >
+        <apex:commandButton value="save" action="{!save}"/>
+    </apex:pageBlockbuttons>
+        
+    </apex:pageBlock>
+
+    
+    
+</apex:form>
+
+
+</apex:page>

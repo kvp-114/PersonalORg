@@ -1,0 +1,29 @@
+<apex:page controller="PaginationSmpleController">
+
+    <apex:form >
+        <apex:pageBlock id="pb">
+          <apex:pageBlockTable value="{!Accounts}" var="acct">
+              <apex:column value="{!acct.name}"/>
+              <apex:column >
+                  <apex:pageBlockTable value="{!acct.contacts}" var="con">
+                      <apex:column value="{!con.name}"/>
+                  </apex:pageBlockTable>
+              </apex:column>
+          </apex:pageBlockTable>
+          
+          <apex:panelGrid columns="7">
+            <apex:commandButton status="fetchStatus" reRender="pb" value="|<" action="{!first}" disabled="{!!hasPrevious}" title="First Page"/>
+            <apex:commandButton status="fetchStatus" reRender="pb" value="<" action="{!previous}" disabled="{!!hasPrevious}" title="Previous Page"/>
+            <apex:commandButton status="fetchStatus" reRender="pb" value=">" action="{!next}" disabled="{!!hasNext}" title="Next Page"/>
+            <apex:commandButton status="fetchStatus" reRender="pb" value=">|" action="{!last}" disabled="{!!hasNext}" title="Last Page"/>
+            <apex:outputText >{!(pageNumber * size)+1-size}-{!IF((pageNumber * size)>noOfRecords, noOfRecords,(pageNumber * size))} of {!noOfRecords}</apex:outputText>
+            <apex:commandButton status="fetchStatus" reRender="pb" value="Refresh" action="{!refresh}" title="Refresh Page"/>
+            <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                <apex:actionStatus id="fetchStatus" startText="Fetching..." stopText=""/>
+            </apex:outputPanel>
+        </apex:panelGrid>
+        
+        </apex:pageBlock>
+    </apex:form>
+  
+</apex:page>

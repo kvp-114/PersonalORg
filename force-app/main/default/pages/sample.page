@@ -1,0 +1,9 @@
+<apex:page standardController="Account" recordSetVar="Accounts" >
+<Apex:repeat value="{!Accounts}" var="a" >
+    <apex:panelGrid columns="3"  rendered="{!Datevalue(a.LastModifiedDate)==Today()}">
+    
+        <apex:outputText value="{!a.name}" id="theFirst"/>
+        
+    </apex:panelGrid>
+    </Apex:repeat>
+</apex:page>

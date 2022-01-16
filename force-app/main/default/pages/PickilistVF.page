@@ -1,0 +1,7 @@
+<apex:page Standardcontroller="Office_Location__c" extensions="sampleCon12">
+  <apex:form id="myform">
+        <apex:selectList id="countries1" value="{!selectedpickvalue}" size="1"  required="true" style="width:80px">
+            <apex:selectOptions value="{!countries}" />  
+        </apex:selectList>
+    </apex:form>
+</apex:page>

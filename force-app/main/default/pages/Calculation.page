@@ -1,0 +1,19 @@
+<apex:page controller="Calculation">
+    <script>
+        function changeInp1(in1, in2) {
+            alert(in1);
+            chaneText(in1,in2);
+        }
+    </script>
+
+    <apex:form id="form">
+    <apex:actionFunction name="chaneText" action="{!changeInputText}" rerender="form" >
+        <apex:param value="" name="Aparam" assignTo="{!param1}"/>
+        <apex:param value="" name="Bparam" assignTo="{!param2}"/>
+    </apex:actionfunction>
+  input1 <apex:inputtext value="{!input1}" onchange="changeInp1('{!input1}','{!input1}');"/><br/>
+  input2 <apex:inputtext value="{!input2}" rendered="{!display}"/><br/>
+  Result <apex:outputtext value="{!result}"/><br/>
+  <apex:commandButton value="Add" action="{!Addition}" rerender="form"/>
+  </apex:form>
+</apex:page>

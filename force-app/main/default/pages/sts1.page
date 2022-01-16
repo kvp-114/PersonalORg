@@ -1,0 +1,3 @@
+<apex:page controller="sts1" action="{!myfacebook}">
+  vijay<apex:image value="/s.gif" alt="Who can see your posts?" Styleclass="visibilityicon " id="publisherVisibilityIcon" title="Who can see your posts?"/>
+</apex:page>

@@ -1,0 +1,61 @@
+<apex:page controller="allFields">
+    <apex:form >
+        
+        <table width="50%">
+            <tr>
+            <td>
+                 <apex:selectList value="{!opt}" multiselect="false" size="1">
+                    <apex:selectOptions value="{!options}"/>
+                </apex:selectList>
+                </td>
+                <td>
+                <apex:selectList value="{!opLst}" multiselect="false" size="1">
+                    <apex:selectOptions value="{!operatorList}"/>
+                </apex:selectList>
+                </td><td>
+                <apex:inputtext value="{!serchValue}"/>
+                </td><td>
+                <apex:selectRadio value="{!conditionValue}">
+                    <apex:selectOptions value="{!conditions}"/>
+                </apex:selectRadio>
+                </td>
+                </tr></table>
+                <apex:selectList value="{!opt1}" multiselect="false" size="1">
+                    <apex:selectOptions value="{!options}"/>
+                </apex:selectList>
+                <apex:selectList value="{!opLst1}" multiselect="false" size="1">
+                    <apex:selectOptions value="{!operatorList}"/>
+                </apex:selectList>
+                <apex:inputtext value="{!serchValue1}"/><br/><br/>
+                <apex:selectList value="{!opt2}" multiselect="false" size="1">
+                    <apex:selectOptions value="{!options}"/>
+                </apex:selectList>
+                <apex:selectList value="{!opLst2}" multiselect="false" size="1">
+                    <apex:selectOptions value="{!operatorList}"/>
+                </apex:selectList>
+                <apex:inputtext value="{!serchValue2}"/><br/><br/>
+                <apex:selectList value="{!opt3}" multiselect="false" size="1">
+                    <apex:selectOptions value="{!options}"/>
+                </apex:selectList>
+                <apex:selectList value="{!opLst3}" multiselect="false" size="1">
+                    <apex:selectOptions value="{!operatorList}"/>
+                </apex:selectList>
+                <apex:inputtext value="{!serchValue3}"/><br/><br/>
+                <apex:selectList value="{!opt4}" multiselect="false" size="1">
+                    <apex:selectOptions value="{!options}"/>
+                </apex:selectList>
+                <apex:selectList value="{!opLst4}" multiselect="false" size="1">
+                    <apex:selectOptions value="{!operatorList}"/>
+                </apex:selectList>
+                <apex:inputtext value="{!serchValue4}"/><br/><br/><br/><br/><br/><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Available Fields </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Selected Fields </b><br/><br/> 
+                <apex:selectList value="{!availableFields}" multiselect="true" size="10">
+                    <apex:selectOptions value="{!options}"/>
+                </apex:selectList>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<apex:commandButton value=">" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <apex:selectList value="{!selectedFields}" multiselect="true" size="10">
+                    <apex:selectOptions value="{!options}"/>
+                </apex:selectList>
+        
+            
+    </apex:form>
+</apex:page>

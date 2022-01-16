@@ -1,0 +1,108 @@
+<apex:page controller="popup">
+<head>
+    <apex:includeScript value="{!URLFOR($Resource.JqueryA, 'js/jquery-1.6.2.min.js')}"/>
+            <apex:includeScript value="{!URLFOR($Resource.JqueryA, 'js/jquery-ui-1.8.16.custom.min.js')}"/>
+            <apex:includeScript value="{!URLFOR($Resource.popup)}"/>
+            <apex:stylesheet value="{!URLFOR($Resource.JqueryA, 'css/ui-lightness/jquery-ui-1.8.16.custom.css')}"/>
+</head>
+    <style type="text/css">
+    
+    .content a{
+        text-decoration: none;
+    }
+    .popup{
+        width: 100%;
+        margin: 0 auto;
+        display: none;
+        position: fixed;
+        z-index: 101;
+    }
+    .content{
+        min-width: 600px;
+        width: 600px;
+        min-height: 150px;
+        margin: 50px auto;
+        background: white solid;
+        position: relative;
+        z-index: 103;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px #000;
+    }
+    
+    .content p a{
+        color: #d91900;
+        font-weight: bold;
+    }
+    
+    
+    </style>
+
+    <script type='text/javascript'>
+    
+        $(document).ready(function() {
+            $('#close').click(function(){
+                $('.popup').hide();
+                return false;
+        }); 
+            $('#click').click(function(){
+            $('.popup').show();
+            return false;
+        });
+    });       
+                
+    </script>
+    
+<apex:form id="myform">
+    <div Class="popup">
+        <div class='content'>
+            <apex:inputtext id="brandsId" />
+           
+            <table  bordercolor="#FFFFFF" style="background-color:#FFFFFF" width="100%" >
+                <tr>
+                    <td colspan="4" align="center">
+                        <b> Brands</b> <br/>
+                    </td>
+                </tr>
+                <tr width="25%">
+                    <td align="Left">
+                      <apex:inputcheckbox id="SF"/>&nbsp;&nbsp;SF&nbsp;&nbsp;</td>
+                    <td align="Left"> <apex:inputcheckbox id="Fastrack" /> &nbsp;&nbsp;Fastrack&nbsp;&nbsp; </td>
+                      <td align="Left"><apex:inputcheckbox id="SONATA"/>&nbsp;&nbsp;Sonata &nbsp;&nbsp; </td>
+                     <td align="Left"><apex:inputcheckbox id="TEES"/> &nbsp;&nbsp;Tees&nbsp;&nbsp; </td></tr>
+                     <tr>
+                     <td align="Left"><apex:inputcheckbox id="TITAN"/> &nbsp;&nbsp;Titan&nbsp;&nbsp; </td>
+                      <td align="Left"><apex:inputcheckbox id="Xylys"/>&nbsp;&nbsp;Xylys&nbsp;&nbsp; </td>
+                      <td align="Left"><apex:inputcheckbox id="Zoop"/>&nbsp;&nbsp;Zoop&nbsp;&nbsp; </td>
+                    
+                    
+                </tr>
+                <tr><td></td></tr>
+                
+                 
+                <tr width="25%">
+                    <td align="center" colspan="4"> <apex:commandButton id="close" styleClass="k-button" value="Go"  reRender="myform"/></td>
+                </tr>
+              
+            </table> 
+        </div>
+    </div>    
+      
+<apex:commandButton value="search" onclick="popupPage();" styleClass="click" id="click" reRender="myform"/>
+<script type='text/javascript'>
+    
+        $(function(){
+            $(".k-button").click(function(){
+                $(".popup").hide();
+                return false;
+        }); 
+            $(".click").click(function(){
+            $(".popup").show();
+            return false;
+        });
+    });       
+                
+    </script>
+ </apex:form>  
+
+</apex:page>

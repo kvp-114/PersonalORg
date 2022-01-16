@@ -1,0 +1,46 @@
+<apex:page controller="exng">
+<apex:form >
+    <apex:pageblock rendered="{!pg1}">
+        <apex:pageBlockSection >
+    
+    <apex:outputPanel >
+    <apex:outputLabel >
+    val1
+    </apex:outputLabel>
+        <apex:inputText value="{!value1}"/> 
+        </apex:outputPanel> 
+        <br></br>
+        <apex:outputPanel >
+    <apex:outputLabel >
+    val2
+    </apex:outputLabel> 
+        <apex:inputText value="{!value2}"/> 
+        </apex:outputPanel>  
+        </apex:pageBlockSection>
+        <apex:pagemessages ></apex:pagemessages>/> 
+    
+    <apex:commandButton value="exchange" action="{!swap}"/>
+    
+
+        </apex:pageblock>
+        <apex:pageBlock rendered="{!pg2}">
+        <apex:outputPanel >
+        <apex:outputLabel value="val1=  ">
+     
+    </apex:outputLabel>
+        <apex:outputText value="{!value1}">
+        </apex:outputText>
+        
+        <br> </br>
+        </apex:outputPanel>
+        <apex:outputPanel >
+        <apex:outputLabel value="val2=  " >
+     
+    </apex:outputLabel>
+        <apex:outputText value="{!value2}">
+        </apex:outputText>
+        </apex:outputPanel>
+        </apex:pageBlock>
+        </apex:form>
+  
+</apex:page>

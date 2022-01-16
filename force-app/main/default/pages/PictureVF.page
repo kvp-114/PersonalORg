@@ -1,0 +1,96 @@
+<apex:page StandardController="Account" extensions="pictureApex">
+    <head>
+        <apex:stylesheet value="{!URLFOR($Resource.JqueryPlugin,'jsor-jcarousel-60e2338/examples/connected-carousels/jcarousel.connected-carousels.css')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.JqueryPlugin, 'jsor-jcarousel-60e2338/libs/jquery/jquery.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.JqueryPlugin, 'jsor-jcarousel-60e2338/dist/jquery.jcarousel.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.JqueryPlugin, 'jsor-jcarousel-60e2338/examples/connected-carousels/jcarousel.connected-carousels.js')}"/>
+    </head>
+    <style>
+        .wrapper {
+            max-width: 620px;
+            padding: 0 20px 40px 20px;
+        }
+    </style>
+    <script>
+        function changePic(rowNum) {
+            changePicture(rowNum);
+        }
+    </script>
+    
+    <table width="100%"><tr><td width="30%">
+        <apex:form >
+            <apex:actionFunction name="changePicture" action="{!chatterChange}" reRender="chatterFeed">
+                <apex:param value="" assignTo="{!row}" name="row"/>
+            </apex:actionFunction>
+            <div class="wrapper">
+                <div class="connected-carousels">
+                        <div class="stage">
+                            <div class="carousel carousel-stage">
+                                <ul id="mycarousel" class="jcarousel-skin-tango">
+                                    <apex:variable value="{!0}" var="PicNum"/>
+                                    <apex:repeat value="{!urlList}" var="urlLst">
+                                        <li>
+                                            <apex:image value="{!URLFor($Resource.JqueryPlugin,'jsor-jcarousel-60e2338/examples/_shared/img/img1.jpg')}"  style="width:120%;margin-left:-3%"/>
+                                        </li>
+                                        <li>
+                                            <apex:image value="{!URLFor($Resource.JqueryPlugin,'jsor-jcarousel-60e2338/examples/_shared/img/img2.jpg')}"  style="width:400px;margin-left:-3%"/>
+                                        </li>
+                                        <li>
+                                            <apex:image value="{!URLFor($Resource.JqueryPlugin,'jsor-jcarousel-60e2338/examples/_shared/img/img3.jpg')}"  style="width:120%;margin-left:-3%"/>
+                                        </li>
+                                        <li>
+                                            <apex:image value="{!URLFor($Resource.JqueryPlugin,'jsor-jcarousel-60e2338/examples/_shared/img/img4.jpg')}"  style="width:120%;margin-left:-3%"/>
+                                        </li>
+                                        <apex:variable value="{!PicNum+1}" var="PicNum"/>
+                                    </apex:repeat>
+                                </ul>
+                            </div>
+                            <a href="#" class="prev prev-stage"><span>&lsaquo;</span></a>
+                            <a href="#" class="next next-stage"><span>&rsaquo;</span></a>
+                        </div>
+                    <!--<div class="navigation">
+                        <a href="#" class="prev prev-navigation">&lsaquo;</a>
+                        <a href="#" class="next next-navigation">&rsaquo;</a>
+                        <div class="carousel carousel-navigation">
+                            <ul>
+                                <li><apex:image value="{!URLFor($Resource.JqueryPlugin,'jsor-jcarousel-60e2338/examples/_shared/img/img1_thumb.jpg')}"/></li>
+                                <li><apex:image value="{!URLFor($Resource.JqueryPlugin,'jsor-jcarousel-60e2338/examples/_shared/img/img2_thumb.jpg')}"/></li>
+                                <li><apex:image value="{!URLFor($Resource.JqueryPlugin,'jsor-jcarousel-60e2338/examples/_shared/img/img3_thumb.jpg')}"/></li>
+                                <li><apex:image value="{!URLFor($Resource.JqueryPlugin,'jsor-jcarousel-60e2338/examples/_shared/img/img4_thumb.jpg')}"/></li>
+                                <li><apex:image value="{!URLFor($Resource.JqueryPlugin,'jsor-jcarousel-60e2338/examples/_shared/img/img5_thumb.jpg')}"/></li>
+                                <li><apex:image value="{!URLFor($Resource.JqueryPlugin,'jsor-jcarousel-60e2338/examples/_shared/img/img6_thumb.jpg')}"/></li>
+                            </ul>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </apex:form>
+        </td>
+        <td>
+            <table width="100%">
+             <tr><td>
+            <chatter:feedWithFollowers id="chatterFeed" rendered="true" entityId="{!chatterFID}" showHeader="true" /> 
+            </td></tr>    
+            </table>
+        </td></tr>
+    </table>
+    <script>
+        
+        var v=0;
+        $('.stage').on('jcarousel:scroll', function(event, carousel, target, animate) {
+            var urlListSize='{!listSize}';
+            var symbol=target.substr(0, target.indexOf('='));
+            var inttt= target.substr(target.indexOf('=')+1,urlListSize);
+            if(symbol=='+'){
+                if(v<=urlListSize){
+                    v=v+parseInt(inttt) ;
+                }
+            }else if(symbol=='-'){
+                if(v<=urlListSize){
+                    v=v-parseInt(inttt) ;
+                }
+            }
+            changePic(v);
+        });    
+    </script>    
+</apex:page>

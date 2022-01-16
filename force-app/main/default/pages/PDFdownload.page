@@ -1,0 +1,39 @@
+<apex:page controller="forceDownloadPDF" renderAs="pdf" >
+
+    <apex:form >
+        <apex:pageBlock >
+            <h2>PDF Download example</h2>
+            <p>This is some content that could be displayed as a PDF or a regular web page depedning on the URL params. The valid URL params are as follows</p>
+            <table width="100%" cellpadding="5" cellspacing="5">
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Required</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>pdf</td>
+                    <td>String with a boolean value</td>
+                    <td>null/false</td>
+                    <td>false</td>
+                    <td>if passed in as a true the page will be rendered as a PDF. Otherwise displayed as HTML</td>
+                </tr>
+                <tr>
+                    <td>force_download</td>
+                    <td>String with a boolean value</td>
+                    <td>null/false</td>
+                    <td>false</td>
+                    <td>If true the user will be prompted to download the contents of the page. Suggested to be paired with pdf=true</td>
+                </tr>
+                <tr>
+                    <td>filename</td>
+                    <td>String (valid file name)</td>
+                    <td>'My PDF Report [todays date].pdf'</td>
+                    <td>false</td>
+                    <td>A name for the file. Only used if force_download=true</td>
+                </tr>    
+            </table>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

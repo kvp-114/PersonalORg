@@ -1,0 +1,11 @@
+<apex:page controller="test1" >
+<apex:form >
+    <apex:pageBlock title="pageblock">
+        <apex:pageblocksection >
+        <apex:inputField value="{!a.name}"/>
+        </apex:pageblocksection>
+    </apex:pageBlock>
+
+</apex:form>
+ 
+</apex:page>

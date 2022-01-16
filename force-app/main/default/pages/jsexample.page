@@ -1,0 +1,15 @@
+<apex:page controller="a1234">
+<script type="text/javascript">
+    function test(a){
+        alert(a);
+        function1(a);
+    }
+</script>
+  <apex:form >
+      <apex:inputtext id="my" onclick="test('1');"/>
+      <apex:actionFunction name="function1"  >
+      <apex:param name="x" value=""/>
+  </apex:actionfunction>
+  </apex:form>
+  
+</apex:page>

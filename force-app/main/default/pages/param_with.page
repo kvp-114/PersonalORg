@@ -1,0 +1,6 @@
+<apex:page >
+It is worth:
+<apex:outputText value="{0, number,###,###,###.00000}">
+       <apex:param value="{!200.3012}" />
+ </apex:outputText>
+</apex:page>

@@ -1,0 +1,42 @@
+<apex:page standardController="Account">
+       <script type="text/javascript">
+          var __sfdcSessionId = '{!GETSESSIONID()}';
+        </script>
+
+      <script src="/soap/ajax/35.0/connection.js" type="text/javascript"></script>
+<script src="/soap/ajax/35.0/apex.js" type="text/javascript"></script>
+      <script type="text/javascript">
+           window.onload= function() {
+               alert(1);
+                var result = sforce.connection.query("Select Id From RecordType  Where SobjectType = 'Account' and DeveloperName = 'KVP' limit 1", {
+                                                                            onSuccess : success, onFailure : failure});
+            }
+            
+            function success(result) {
+                alert('success');
+                var records = result.getArray('records');
+                
+                var rit = new sforce.QueryResultIterator(result);
+               var rk = rit.next();
+               var acntId = rk.Id;
+               alert(acntId);
+
+            } 
+            
+            function failure(error) {
+                alert('error'+error);
+            }
+         
+      </script>
+      
+
+   
+   <body>
+      <p>Click the following button, you will be redirected to home page.</p>
+      
+      <form>
+         <input type="button" value="Redirect Me" onclick="Redirect();" />
+      </form>
+      
+   </body>
+</apex:page>

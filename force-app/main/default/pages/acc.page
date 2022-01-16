@@ -1,0 +1,10 @@
+<apex:page standardController="Account" recordSetVar="accounts">
+<apex:form >
+    <apex:pageBlock >
+        <apex:pageBlocktable value="{!accounts}" var="a">
+            <apex:inputField value="{!a.Name}"/>
+        </apex:pageBlocktable> 
+         
+     </apex:pageBlock>
+     </apex:form>
+</apex:page>

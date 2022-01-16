@@ -1,0 +1,170 @@
+<apex:page controller="ContactSearchController" sidebar="false" id="mainpage">
+    <apex:form id="formid">
+        <apex:pageMessages id="errors" />
+       <script type="text/javascript">
+  
+  function selectCheckboxes(inpt,receivedInptID)
+   {
+     var inputCheckBox = document.getElementsByTagName("input");                 
+     for(var i=0; i<inputCheckBox.length; i++)
+      {         
+       if(inputCheckBox[i].id.indexOf(receivedInptID)!=-1){                                    
+          inputCheckBox[i].checked = inpt.checked;
+       }
+     }
+   }
+   function selecAndUnselect(){
+       var numOfUnChecked=0;
+       var contactSize=document.getElementsByClassName('checkClass').length;
+       for (var i=0;i<contactSize; i++)
+        { 
+            if(document.getElementById("mainpage:formid:mainblock:results:pbt:"+i+":inputId").checked==false){
+                numOfUnChecked=numOfUnChecked+1;
+            }
+        }
+         if(numOfUnChecked>0){
+             document.getElementById("mainpage:formid:mainblock:results:pbt:headerCheckBoxid").checked = false;
+         }else{
+             document.getElementById("mainpage:formid:mainblock:results:pbt:headerCheckBoxid").checked = true;
+         }   
+       
+       
+   }
+   
+</script>
+        <apex:pageBlock title="Find Me A Contact!" mode="edit" id="mainblock">
+            <table width="100%" border="0">
+                <tr>  
+                    <td width="200" valign="top">
+                        <apex:pageBlock title="Filters" mode="edit" id="criteria">
+                            <script type="text/javascript">
+                                function doSearch() {
+                                    searchServer(                                    
+                                    document.getElementById("firstName").value,
+                                    document.getElementById("lastName").value,
+                                    document.getElementById("accountName").value,
+                                    document.getElementById("technology").options[document.getElementById("technology").selectedIndex].value
+                                    );
+                                }
+                                
+                                function languageJs(){
+                                    var language = prompt("Please enter language",""); 
+                                    var contactSize=document.getElementsByClassName('checkClass').length;
+                                    var contactIds='';
+                                    for (var i=0;i<contactSize; i++)
+                                    { 
+                                        if(document.getElementById("mainpage:formid:mainblock:results:pbt:"+i+":inputId").checked){
+                                        
+                                        contactIds=contactIds+document.getElementById("mainpage:formid:mainblock:results:pbt:"+i+":contactid").value;
+                                        if(i<(contactSize-2)){
+                                            contactIds=contactIds+',';
+                                        }
+                                        }
+                                    }
+                                    test1(contactIds,language);
+                                }
+                            </script> 
+                            <apex:actionFunction name="test1" action="{!toInsertLanguage}" rerender="results,errors,criteria">
+                                   <apex:param name="abcd" value="" assignTo="{!con}"/>
+                                   <apex:param name="fdsff" value="" assignTo="{!contactLanguage}"/>
+                            </apex:actionFunction>
+                            <apex:actionFunction name="searchServer" action="{!runSearch}" rerender="results,errors">
+                                <apex:param name="firstName" value="" />
+                                <apex:param name="lastName" value="" />
+                                <apex:param name="accountName" value="" />
+                                <apex:param name="technology" value="" />
+                            </apex:actionFunction>
+                            <table>
+                                <tr>
+                                    <td style="font-weight:bold;">First Name<br/>
+                                        <input type="text" id="firstName" onkeyup="doSearch();"/>
+                                    </td>
+                                    <td style="font-weight:bold;">Last Name<br/>
+                                        <input type="text" id="lastName" onkeyup="doSearch();"/>
+                                    </td>
+                                    <td style="font-weight:bold;">Account<br/>
+                                        <input type="text" id="accountName" onkeyup="doSearch();"/>
+                                    </td>
+                                    <td style="font-weight:bold;">Interested Technologies<br/>
+                                        <select id="technology" onchange="doSearch();">
+                                            <option value=""></option>
+                                            <apex:repeat value="{!technologies}" var="tech">
+                                                <option value="{!tech}">{!tech}</option>
+                                            </apex:repeat>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </apex:pageBlock>
+                        
+                    </td>
+                    </tr>
+                    <tr>
+                    <td valign="top" id="tabletd">
+                        <apex:pageBlock mode="edit" id="results">
+                            <apex:pageBlockTable value="{!contacts}" var="contact" id="pbt">
+                                <apex:column >
+                                    <apex:facet name="header">
+                                        <apex:inputCheckbox id="headerCheckBoxid" onclick="selectCheckboxes(this,'inputId')"/>
+                                       
+                                    </apex:facet>
+                                    <!--<input type="checkbox"  id="inputId" />   -->
+                                  
+                                     <apex:inputCheckbox id="inputId" onClick="selecAndUnselect();" styleClass="checkClass"/>
+                                     <apex:inputtext style="display:none;" value="{!contact.id}" id="contactid" />
+                                </apex:column> 
+                                <apex:column >
+                                    <apex:facet name="header">
+                                        <apex:commandLink value="First Name" action="{!toggleSort}" rerender="results,debug">
+                                            <apex:param name="sortField" value="firstName" assignTo="{!sortField}"/>
+                                        </apex:commandLink>
+                                    </apex:facet>
+                                    <apex:outputField value="{!contact.firstName}"/>
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header">
+                                        <apex:commandLink value="Last Name" action="{!toggleSort}" rerender="results,debug">
+                                            <apex:param name="sortField" value="lastName" assignTo="{!sortField}"/>
+                                        </apex:commandLink>
+                                    </apex:facet>
+                                    <apex:outputField value="{!contact.lastName}"/>
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header">
+                                        <apex:commandLink value="Account" action="{!toggleSort}" rerender="results,debug">
+                                            <apex:param name="sortField" value="account.name" assignTo="{!sortField}"/>
+                                        </apex:commandLink>
+                                    </apex:facet>
+                                    <apex:outputField value="{!contact.account.name}"/>
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header">
+                                        <apex:commandLink value="Technologies" action="{!toggleSort}" rerender="results,debug">
+                                            <apex:param name="sortField" value="interested_technologies__c" assignTo="{!sortField}"/>
+                                        </apex:commandLink>
+                                    </apex:facet>
+                                    <apex:outputField value="{!contact.interested_technologies__c}"/>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                                <apex:panelGrid columns="7">
+                                    <apex:commandButton status="fetchStatus" reRender="results" value="|<" action="{!setCon.first}" disabled="{!!setCon.hasPrevious}" title="First Page"/>
+                                    <apex:commandButton status="fetchStatus" reRender="results" value="<" action="{!setCon.previous}" disabled="{!!setCon.hasPrevious}" title="Previous Page"/>
+                                    <apex:commandButton status="fetchStatus" reRender="results" value=">" action="{!setCon.next}" disabled="{!!setCon.hasNext}" title="Next Page"/>
+                                    <apex:commandButton status="fetchStatus" reRender="results" value=">|" action="{!setCon.last}" disabled="{!!setCon.hasNext}" title="Last Page"/>
+                                    <apex:outputText >{!(setCon.pageNumber * size)+1-size}-{!IF((setCon.pageNumber * size)>noOfRecords, noOfRecords,(setCon.pageNumber * size))} of {!noOfRecords}</apex:outputText>
+                                    <apex:commandButton status="fetchStatus" reRender="results" value="Refresh" action="{!refresh}" title="Refresh Page"/>
+                                    <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                                        <apex:actionStatus id="fetchStatus" startText="Fetching..." stopText=""/>
+                                    </apex:outputPanel>
+                                </apex:panelGrid>
+                               <apex:pageBlockButtons location="bottom" Style="padding-left:150px;">
+                                   <apex:commandButton value="Save" onclick="languageJs();"/> 
+                               </apex:pageBlockButtons>
+                        </apex:pageBlock>
+                    </td>
+                    
+                </tr>
+            </table>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

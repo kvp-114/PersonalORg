@@ -1,0 +1,39 @@
+<apex:page renderAs="PDf">
+
+<html>
+<head>
+<style>
+            .tdclass span{
+                display:block;
+                word-wrap:break-word;
+                max-width:50px;
+                
+            }
+            .tableDiv{
+                width:500px;
+            }
+        </style></head>
+<body>
+<div class="tableDiv">
+    <table width="100%" border="1px">
+        <tr>
+            <td class="tdclass" >
+            <span>asjhbfcasgdfvsggghjghghjkgjhjhjkllkhkhkhkjhjhkjh</span>
+            </td>
+            <td class="tdclass">asjhbfcasgdfvsggghjghghjkgjhjhjkllkhkhkhkjhjhkjh
+            </td>
+            <td class="tdclass">
+            </td>
+            <td class="tdclass" >
+            </td>
+            <td class="tdclass" >
+            </td>
+            <td class="tdclass" >
+            </td>
+        </tr>
+    </table>
+</div>    
+</body>
+</html>
+ 
+</apex:page>

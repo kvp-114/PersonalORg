@@ -1,0 +1,23 @@
+<apex:page standardController="Opportunity"  id="Pg">
+<apex:form >
+ 
+ 
+    <apex:actionRegion >
+        <apex:inputField value="{!opportunity.stageName}" id="stage">
+          <apex:actionSupport event="onchange" rerender="ajaxrequest" status="status"/>
+      </apex:inputField>
+          </apex:actionRegion>
+      
+     
+ 
+ <apex:outputPanel id="ajaxrequest">
+     <apex:pageBlock rendered="{!Opportunity.StageName == 'Prospecting'}" >
+         vijay
+     </apex:pageBlock>
+             
+  </apex:outputPanel>
+
+ 
+ 
+ </apex:form>
+</apex:page>

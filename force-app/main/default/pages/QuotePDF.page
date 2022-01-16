@@ -1,0 +1,1472 @@
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>
+
+<!----<apex:page >
+ 
+    <head>
+      <style type="text/arial" media="print">    
+           @media print{
+                table {page-break-inside:auto}
+                tr    { page-break-inside:avoid; page-break-after:auto;page-break-before:auto }
+                thead { display:table-header-group }
+            }
+            @page {
+                margin: 75px 16px 75px 16px;Padding-top:30px;
+                @PageBreak{
+                   page-break:always;
+                    page-break-inside:avoid;
+                } 
+               
+                @top-center {
+                    content: element(header);
+                }
+                @bottom-center {
+                    content: element(footer);
+                }
+            }             
+            div.header{   
+                padding-top:60px;              
+                position: running(header);           
+            } 
+            div.footer {
+                position : running(footer) ;
+            }
+            .pagenumber:before {                
+                content: counter(page);             
+            }                       
+            .pagecount:before {             
+                content: counter(pages);            
+            } 
+            #tc{           
+                border:1px  solid black ;
+            } 
+            #tt{
+                border:none ;
+            }   
+            .hideTd {
+                display: none;
+            }
+            .fontChange {
+                font-size:17px;
+                line-hieght:2px;
+            }
+            .none {border-top:none;}
+            .ftd{
+                max-width:5%;
+                min-wdith:5%;
+            }
+            .std{
+                max-width:15%;
+            }
+            .ttd{
+                max-width :20%;
+            }
+            .fotd{
+                max-width:20%;
+            }
+            .table{
+                border :2px solid black;
+                border-collapse:collapse;
+            }
+            .tbl_main {
+                font-size: 12px;
+                border-bottom: 1px solid #000;
+                border-left: 1px solid #000;
+                page-break-inside:avoid;
+            }
+            
+            .tdCustom {
+                border-top: 1px solid #000;
+                border-right: 1px solid #000;
+                text-align: center;
+                height : 34pt;
+            }
+            .rBorder {
+                border-right: 1px solid #000;
+            }
+            .headTable {
+                border: 1px solid #000;
+                padding: 10px;
+            }
+            .table1 {
+                border: 1px solid #000;
+                border-bottom: none;
+            }
+            .btmBrdr {
+                border-bottom: 1px solid #000;
+            }
+        </style>                 
+    </head>
+    <div class="header">   
+        <div>  
+             <table width="100%" height = "100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="50%" align="left"> 
+                        <img style="WIDTH:200px; HEIGHT: 50px;padding-left:5px" src='{!URLFOR($Resource.NicomaticLogo)}' title="logo" />
+                    </td> 
+                    <td width="50%" align="right" style="padding-right:5px">
+                        <b>QUOTATION:<apex:outputField value="{!Quote__c.Quote_Number_New__c}"/></b>
+                    </td>  
+                </tr>
+             </table> 
+        </div> 
+    </div>
+    <div class="footer"> 
+        <div >
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border-top:solid; border-color:#EBEBEB;">
+                <tr>           
+                    <td align="center">
+                        <apex:outputText value="Page " style="font-face:verdana;font-size:0.68em;"/>
+                        <span class="pagenumber" style="font-face:verdana;font-size:0.68em;"/> 
+                        <apex:outputText value="of" style="font-face:verdana;font-size:0.68em;padding-left:2px;padding-right:2px"/> 
+                        <span class="pagecount" style="font-face:verdana;font-size:0.68em;"/>
+                    </td>
+                </tr>         
+            </table>
+        </div>      
+    </div>
+      
+       <table border="0" cellpadding="0" cellspacing="0" width="100%" class = "headTable">
+        <tr>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                <td width="160px" style="font-size:13px;"> 
+                    <img src='{!URLFOR($Resource.QuoteImage)}'/><img src='{!URLFOR($Resource.QuoteImage1)}'/>     
+                </td>
+                <td class = "fontChange" align="left" style = "vertical-align: top;line-height:23pt;font-size:20px;">
+                    <font align="center">
+                        <i>
+                            <center>Conception, développement, fabrication et <br/> commercialisation de connecteurs et commutateurs par <br/> dômes métalliques pour environnement sévère.</center>
+                        </i>
+                    </font>
+                </td> 
+            </apex:panelGroup> 
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                <td width="160px" style="font-size:13px;"> 
+                    <img src='{!URLFOR($Resource.QuoteImage)}'/><img src='{!URLFOR($Resource.QuoteImage1)}'/>     
+                </td>
+                <td class = "fontChange" align="left" style = "vertical-align: top;line-height:23pt;font-size:20px;">
+                    <font align="center">
+                        <i>
+                            <center>Design, development, manufacturing and marketing of<br/> 
+                            connectors,cable assemblies and metal dome switches <br/> for harsh environment.</center>
+                        </i>
+                    </font>
+                </td> 
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'Brazil' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA' }">      
+                <td width="250px" style="font-size:13px;">
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India'}">
+                        <table style="padding-right:5px">
+                            <tr>
+                                <td colspan="2">
+                                    <font style="padding-right:1px;font-size:13px;">
+                                        <b>Nicomatic India Electronics Pvt Ltd</b>
+                                    </font> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:170px">
+                                    <font style="padding-right:1px;font-size:13px;"> 
+                                        <apex:outputField value="{!Quote__c.User_Street__c}"/>
+                                    </font> 
+                                </td>
+                            </tr>
+                        </table> 
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'China'}">
+                        <font style="padding-right:1px;font-size:13px;"><b>Nicomatic (Tianjin) Electronics Co. Ltd,</b><br/><apex:outputField value="{!Quote__c.User_Street__c}"/>,<apex:outputField value="{!Quote__c.User_City__c}"/>,</font>  <br/>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                        <font style="padding-right:1px;font-size:13px;"><b>Nicomatic South America LTDA,</b><br/><apex:outputField value="{!Quote__c.User_Street__c}"/>,<apex:outputField value="{!Quote__c.User_City__c}"/>,</font>  <br/>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'USA'}">
+                        <font style="padding-right:1px;font-size:13px;"><b>Nicomatic North America</b><br/><apex:outputField value="{!Quote__c.User_Street__c}"/></font>  <br/>
+                    </apex:panelGroup>
+                        
+                    <font style="font-size:13px"><apex:outputField value="{!Quote__c.User_City__c}"/>,&nbsp;<apex:outputField value="{!Quote__c.User_State__c}"/> &nbsp;&nbsp; <apex:outputField value="{!Quote__c.User_Postal_Code__c}"/>,&nbsp;<apex:outputField value="{!Quote__c.User_Country__c}"/> </font>
+                    <br/>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                        <font style="font-size:13px">Telefone:<apex:outputField value="{!Quote__c.From_Phone__c}"/></font> <br/>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' ||  Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA' }">      
+                        <font style="font-size:13px">Phone:&nbsp;&nbsp;<apex:outputField value="{!Quote__c.From_Phone__c}"/></font> <br/>
+                    </apex:panelGroup> 
+                    <font style="font-size:13px">Fax:&nbsp;&nbsp; <apex:outputField value="{!Quote__c.User_Fax__c}"/></font> <br/>
+                    <font style="font-size:13px">Email:&nbsp;&nbsp; <apex:outputText value="{!Quote__c.From_Email__c}"/></font> 
+                </td>
+                <td class = "fontChange" align="left" style = "vertical-align: top;line-height:20pt;font-size:18px;">
+                    <font align="center">
+                        <i>
+                            <center>Design, development, manufacturing and marketing of<br/> connectors, cable assemblies and metal dome switches <br/>for harsh environment.</center>
+                        </i>
+                    </font>
+                </td>
+            </apex:panelGroup>
+        </tr>
+        <tr>       
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' }">
+                <td style="font-size:13px; text-align: center;" >     
+                    Nicomatic est certifiée<br/>
+                    ISO 9001:2008<br/>EN 9100:2009<br/>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'Brazil' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA' }">      
+                <td style="font-size:13px; text-align: center;" >   
+                </td>
+            </apex:panelGroup>
+            <td style="font-size:13px; vertical-align: bottom;" align="right" ><font  ><i>www.nicomatic.com</i></font></td>
+        </tr>
+    </table>   
+    <br/>
+       <table border="0" cellpadding="0" cellspacing="0" width="100%" class = "table1">
+        <tr style="height:22px">
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                <td width="33.5%" style="font-size:13px;padding-right:5px;padding-left:3px" ><b>Cotação Ref. : </b><apex:outputField value="{!Quote__c.Quote_Number_New__c}"/></td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA' }">       
+                <td width="33.5%" style="font-size:13px;padding-right:5px;padding-left:3px" ><b>Quote Reference : </b><apex:outputField value="{!Quote__c.Quote_Number_New__c}"/></td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">       
+                <td width="33.5%" style="font-size:13px;padding-right:5px;padding-left:3px" ><b>Référence offre : </b><apex:outputField value="{!Quote__c.Quote_Number_New__c}"/></td>
+            </apex:panelGroup>
+             <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">       
+                <td width="33.5%" style="font-size:13px;padding-right:5px;padding-left:3px" ><b>Quote Reference : </b><apex:outputField value="{!Quote__c.Quote_Number_New__c}"/></td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil' }"> 
+                <td width="16.5%" style="font-size:13px;padding-right:5px" ><b>Data : </b>
+                    <apex:outputText value="{0,date,dd'/'MM'/'yyyy}">
+                        <apex:param value="{!Quote__c.Modified_Date__c}" />
+                    </apex:outputText>
+                </td>               
+            </apex:panelGroup>
+           <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'France'}"> 
+                <td width="16.5%" style="font-size:13px;padding-right:5px" >
+                    <b>Date : </b>
+                    <apex:outputText value="{0,date,dd'/'MM'/'yyyy}">
+                        <apex:param value="{!Quote__c.Modified_Date__c}" />
+                    </apex:outputText>
+                </td>               
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'USA'}">
+                <td width="16.5%" style="font-size:13px;padding-right:5px" >
+                    <b>Date : </b>
+                    <apex:outputText value="{0,date,MM'/'dd'/'yyyy}"> 
+                        <apex:param value="{!Quote__c.Modified_Date__c}" />
+                    </apex:outputText>
+                </td>            
+            </apex:panelGroup>
+          <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}"> 
+                <td width="25%" style="font-size:13px;padding-right:5px" ><b>N° de solicitacao : </b><apex:outputField value="{!Quote__c.RFQ_Reference__c}"/></td>        
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA' }"> 
+                <td width="25%" style="font-size:13px;padding-right:5px" >
+                    <b>RFQ Reference : </b>
+                    <apex:outputField value="{!Quote__c.RFQ_Reference__c}"/>
+                </td>        
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == true}"> 
+                <td width="25%" style="font-size:13px;padding-right:5px" >
+                    <b>Référence appel d'offre : </b>
+                    <apex:outputField value="{!Quote__c.RFQ_Reference__c}"/>
+                </td>        
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == false}"> 
+                <td width="25%" style="font-size:13px;padding-right:5px" >
+                    <b>RFQ Reference : </b>
+                    <apex:outputField value="{!Quote__c.RFQ_Reference__c}"/>
+                </td>        
+            </apex:panelGroup>
+           <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}" >
+                <td width="25%" style="font-size:13px;padding-right:5px" >
+                    <b>Data de sol.:  </b>
+                    <apex:outputText value="{0,date,dd'/'MM'/'yyyy}"> 
+                        <apex:param value="{!Quote__c.RFQ_Date__c}" />
+                    </apex:outputText>
+                </td>           
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' ||Quote__c.User_Region1__c == 'China' }">
+                <td width="25%" style="font-size:13px;padding-right:5px" >
+                    <b>RFQ Date: </b>
+                    <apex:outputText value="{0,date,dd'/'MM'/'yyyy}"> 
+                        <apex:param value="{!Quote__c.RFQ_Date__c}" />
+                    </apex:outputText>
+                </td>           
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'USA'}">
+                <td width="25%" style="font-size:13px;padding-right:5px" >
+                    <b>RFQ Date: </b>
+                    <apex:outputText value="{0,date,MM'/'dd'/'yyyy}"> 
+                        <apex:param value="{!Quote__c.RFQ_Date__c}" />
+                    </apex:outputText>
+                </td>            
+            </apex:panelGroup>
+           <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == true}">
+                <td width="25%" style="font-size:13px;padding-right:5px" >
+                    <b>Date appel d'offre:  </b>
+                    <apex:outputText value="{0,date,dd'/'MM'/'yyyy}">
+                        <apex:param value="{!Quote__c.RFQ_Date__c}" />
+                    </apex:outputText>
+                </td>           
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == false}">
+                <td width="25%" style="font-size:13px;padding-right:5px" >
+                    <b>RFQ Date :</b> 
+                    <apex:outputText value="{0,date,dd'/'MM'/'yyyy}">
+                        <apex:param value="{!Quote__c.RFQ_Date__c}" />
+                    </apex:outputText> 
+                </td>           
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c ==null}">
+                <td class="rborder"> </td>
+            </apex:panelGroup>
+        </tr>
+    </table> 
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" class = "table1">  
+        <tr style="height:22px"> 
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">      
+                <td width="33%" class = "btmBrdr" style="font-size:13px;padding-right:5px;padding-left:3px"><b>De : </b><apex:outputField value="{!Quote__c.From1__c}"/></td>                       
+            </apex:panelGroup> 
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA'}">      
+                <td width="33%" class = "btmBrdr" style="font-size:13px;padding-right:5px;padding-left:3px"><b>From : </b><apex:outputField value="{!Quote__c.From1__c}"/></td>                       
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == true}">      
+                <td width="33%" class = "btmBrdr" style="font-size:13px;padding-right:5px;padding-left:3px"><b>De la part de : </b><apex:outputText value="{!Quote__c.From2__r.Name}"/></td>                       
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">      
+                <td width="33%" class = "btmBrdr" style="font-size:13px;padding-right:5px;padding-left:3px"><b>From : </b><apex:outputField value="{!Quote__c.From2__r.Name}"/></td>                       
+            </apex:panelGroup>      
+             <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                <td width="33%" class = "btmBrdr" style="font-size:13px;padding-right:5px"><b>Telefone : </b><apex:outputField value="{!Quote__c.From_Phone__c}"/></td>       
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA'}">
+                <td width="33%" class = "btmBrdr" style="font-size:13px;padding-right:5px"><b>Phone : </b><apex:outputField value="{!Quote__c.From_Phone__c}"/></td>       
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                <td width="33%" class = "btmBrdr" style="font-size:13px;padding-right:5px"><b>Tel : </b><apex:outputField value="{!Quote__c.Author_Phone_New__c }"/></td>       
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                <td width="33%" class = "btmBrdr" style="font-size:13px;padding-right:5px"><b>Phone : </b><apex:outputField value="{!Quote__c.Author_Phone_New__c}"/></td>       
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                 <td width="33%" class = "btmBrdr" style="font-size:13px;padding-right:5px"><b>Email : </b><apex:outputText value="{!Quote__c.Author_Email_New__c}"/></td>       
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                 <td width="33%" class = "btmBrdr" style="font-size:13px;padding-right:5px"><b>Email : </b><apex:outputText value="{!Quote__c.Author_Email__c}"/></td>       
+            </apex:panelGroup>
+             <apex:panelGroup rendered="{!Quote__c.User_Region1__c != 'France'}" >
+                <td width="33%" class = "btmBrdr" style="font-size:13px;padding-right:5px"><b>Email : </b><apex:outputText value="{!Quote__c.From_Email__c}"/></td>
+            </apex:panelGroup>
+        </tr>
+        <tr>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                <td colspan="3" class = "btmBrdr" style="font-size:13px;padding-right:5px;padding-left:3px">
+                    <b>Companhia :  </b>
+                    <b><apex:outputField value="{!Quote__c.Account_Name__r.Name  }"/></b>
+                    <br/>
+                    <font style="padding-left:65px;font-size:13px;">
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_Street__c != null}" >
+                            <apex:outputField value="{!quote__c.Bill_To_Street__c }"  />&nbsp;,&nbsp;
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_City__c != null}" >
+                            <apex:outputField value="{!quote__c.Bill_To_City__c }"  /> ,&nbsp; 
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_State_Province__c != null}" >
+                            <apex:outputField value="{!Quote__c.Bill_To_State_Province__c}" /> &nbsp;-&nbsp; 
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_Zip_Postal_Code__c != null}" >
+                            <apex:outputField value="{!Quote__c.Bill_To_Zip_Postal_Code__c}"  />&nbsp;,&nbsp;
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_Country__c != null}" >
+                            <apex:outputField value="{!quote__c.Bill_To_Country__c }" />.
+                        </apex:panelGroup>
+                    </font>
+                </td>       
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China'}">
+                <td colspan="3" class = "btmBrdr" style="font-size:13px;padding-right:5px;padding-left:3px">
+                    <b>Company : </b>
+                    <b style="font-family: Arial Unicode MS;font-weight: 900;"><apex:outputField value="{!Quote__c.Account_Name__r.Name  }"/></b>
+                    <br/>
+                    <font style="padding-left:65px;font-size:13px;">
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_Street__c != null}" >
+                            <apex:outputField value="{!quote__c.Bill_To_Street__c }"  />&nbsp;,&nbsp;
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_City__c != null}" >
+                            <apex:outputField value="{!quote__c.Bill_To_City__c }"  /> ,&nbsp; 
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_State_Province__c != null}" >
+                            <apex:outputField value="{!Quote__c.Bill_To_State_Province__c}" /> &nbsp;-&nbsp; 
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_Zip_Postal_Code__c != null}" >
+                            <apex:outputField value="{!Quote__c.Bill_To_Zip_Postal_Code__c}"  />&nbsp;,&nbsp;
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_Country__c != null}" >
+                            <apex:outputField value="{!quote__c.Bill_To_Country__c }" />.
+                        </apex:panelGroup>
+                    </font>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'USA'}">
+                <td colspan="3" class = "btmBrdr" style="font-size:13px;padding-right:5px;padding-left:3px">
+                    <b>Company : </b>
+                    <b><apex:outputField value="{!Quote__c.Account_Name__r.Name  }"/></b>
+                    <br/>
+                    <font style="padding-left:65px;font-size:13px;">
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_Street__c != null}" >
+                            <apex:outputField value="{!quote__c.Bill_To_Street__c }"  />,&nbsp;
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_City__c != null}" >
+                            <apex:outputField value="{!quote__c.Bill_To_City__c }"  /> ,&nbsp;
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_State_Province__c != null}" >
+                            <apex:outputField value="{!Quote__c.Bill_To_State_Province__c}" /> &nbsp;&nbsp; 
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_Zip_Postal_Code__c != null}" >
+                            <apex:outputField value="{!Quote__c.Bill_To_Zip_Postal_Code__c}"  />,&nbsp;&nbsp;
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_Country__c != null}" >
+                            <apex:outputField value="{!quote__c.Bill_To_Country__c }" />
+                        </apex:panelGroup>
+                    </font>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                <td colspan="3" class = "btmBrdr" style="font-size:13px;padding-right:5px;padding-left:3px"><b>Société : </b>
+                    <b><apex:outputField value="{!Quote__c.Account_Name__r.Name  }"/></b>
+                    <br/>
+                    <font style="padding-left:65px;font-size:13px;">
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_Street__c != null}" >
+                            <apex:outputField value="{!quote__c.Bill_To_Street__c }"  />&nbsp;,&nbsp;
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_City__c != null}" >
+                            <apex:outputField value="{!quote__c.Bill_To_City__c }"  /> ,&nbsp; 
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_State_Province__c != null}" >
+                            <apex:outputField value="{!Quote__c.Bill_To_State_Province__c}" /> &nbsp;-&nbsp; 
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_Zip_Postal_Code__c != null}" >
+                            <apex:outputField value="{!Quote__c.Bill_To_Zip_Postal_Code__c}"  />&nbsp;,&nbsp;
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_Country__c != null}" >
+                            <apex:outputField value="{!quote__c.Bill_To_Country__c }" />.
+                        </apex:panelGroup>
+                    </font>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                <td colspan="3" class = "btmBrdr" style="font-size:13px;padding-right:5px;padding-left:3px">
+                    <b>Company : </b>
+                    <b><apex:outputField value="{!Quote__c.Account_Name__r.Name  }"/></b>
+                    <br/>
+                    <font style="padding-left:65px;font-size:13px;">
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_Street__c != null}" >
+                            <apex:outputField value="{!quote__c.Bill_To_Street__c }"  />&nbsp;,&nbsp;
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_City__c != null}" >
+                            <apex:outputField value="{!quote__c.Bill_To_City__c }"  /> ,&nbsp; 
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_State_Province__c != null}" >
+                            <apex:outputField value="{!Quote__c.Bill_To_State_Province__c}" /> &nbsp;-&nbsp; 
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_Zip_Postal_Code__c != null}" >
+                            <apex:outputField value="{!Quote__c.Bill_To_Zip_Postal_Code__c}"  />&nbsp;,&nbsp;
+                        </apex:panelGroup>
+                        <apex:panelGroup rendered="{!Quote__c.Bill_To_Country__c != null}" >
+                            <apex:outputField value="{!quote__c.Bill_To_Country__c }" />.
+                        </apex:panelGroup>
+                    </font>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == null}">
+                <td class="rborder"></td>
+            </apex:panelGroup>
+        </tr>
+        <tr style="height:22px">
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                <td class = "btmBrdr" width="33%" style="padding-right:5px;padding-left:3px;font-size:13px;"><b>Atenção do : </b><apex:outputField value="{!Quote__c.Contact_Name__r.Name}"/></td>               
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA'}">
+                <td class = "btmBrdr" width="33%" style="padding-right:5px;padding-left:3px;font-size:13px;"> Attention of :<b style="font-family: Arial Unicode MS;font-weight: 900;"><apex:outputField value="{!Quote__c.Contact_Name__r.Name}"/></b></td>               
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                <td class = "btmBrdr" width="33%" style="padding-right:5px;padding-left:3px;font-size:13px;"><b> A l'attention de  : </b><apex:outputField value="{!Quote__c.Contact_Name__r.Name}"/></td>               
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                <td class = "btmBrdr" width="33%" style="padding-right:5px;padding-left:3px;font-size:13px;"><b>Attention of : </b><apex:outputField value="{!Quote__c.Contact_Name__r.Name}"/></td>               
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                <td class = "btmBrdr" width="33%" style="font-size:13px;"><b>Telefone : </b><apex:outputField value="{!Quote__c.Contact_Name__r.Phone}"/></td>               
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA'}">
+                <td class = "btmBrdr" width="33%" style="font-size:13px;"><b>Phone : </b><apex:outputField value="{!Quote__c.Contact_Name__r.Phone}"/></td>               
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                <td class = "btmBrdr" width="33%" style="font-size:13px;"><b>Tel : </b><apex:outputField value="{!Quote__c.Contact_Name__r.Phone}"/></td>               
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+            <td class = "btmBrdr" width="33%" style="font-size:13px;"><b>Phone : </b><apex:outputField value="{!Quote__c.Contact_Name__r.Phone}"/></td>               
+            </apex:panelGroup>
+            <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px"><b>Email : </b><apex:outputText value="{!Quote__c.Contact_Name__r.Email}"/></td>
+        </tr>
+        <tr style="height:22px">
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px;padding-left:3px">
+                    <b>CC : </b>
+                    <apex:outputText value="{!Quote__c.Copy_To2__c}"/>
+                </td>        
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA'}">
+            <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px;padding-left:3px">
+                <b>Copy to : </b>
+                <apex:outputText value="{!Quote__c.Copy_To3__r.Name}"/>
+            </td>        
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+            <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px;padding-left:3px">
+                <b>Copie à : </b>
+                <apex:outputText value="{!Quote__c.Copy_To3__r.Name}"/>
+            </td>        
+            </apex:panelGroup>
+             <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px;padding-left:3px">
+                    <b>Copy to :  </b>
+                    <apex:outputText value="{!Quote__c.Copy_To3__r.Name}"/>
+                </td>        
+            </apex:panelGroup>
+             <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px">
+                    <b>Telefone : </b>
+                    <apex:outputField value="{!Quote__c.Opportunity_Owner_Phone__c}"/>
+                </td>             
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA'}">
+            <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px">
+                <b>Phone : </b>
+                <apex:outputField value="{!Quote__c.Opportunity_Owner_Phone__c}"/>
+            </td>             
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+            <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px">
+                <b>Tel : </b>
+                <apex:outputField value="{!Quote__c.Opportunity_Owner_Phone__c}"/>
+            </td>             
+            </apex:panelGroup>
+             <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px">
+                    <b>Phone : </b>
+                    <apex:outputField value="{!Quote__c.Opportunity_Owner_Phone__c}"/>
+                </td>             
+            </apex:panelGroup>
+            <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px">
+                <b>Email : </b>
+                <apex:outputText value="{!Quote__c.Opportunity_Owner_Email__c}"/>
+            </td>
+        </tr>
+        <tr style="height:22px">
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px;padding-left:3px">
+                    <b>Agente : </b>
+                    <apex:outputText value="{!Quote__c.Agent_Sales_Rep__r.Name }"/>
+                </td>         
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA'}">
+                <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px;padding-left:3px">
+                    <b>Sales Rep : </b>
+                    <apex:outputText value="{!Quote__c.Agent_Sales_Rep__r.Name }"/>
+                </td>         
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px;padding-left:3px">
+                    <b>Agent : </b>
+                    <apex:outputText value="{!Quote__c.Agent_Sales_Rep__r.Name }"/>
+                </td>         
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px;padding-left:3px">
+                    <b>Sales Rep : </b>
+                    <apex:outputText value="{!Quote__c.Agent_Sales_Rep__r.Name }"/>
+                </td>         
+            </apex:panelGroup>
+             <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px">
+                    <b>Telefone : </b>
+                    <apex:outputText value="{!Quote__c.Agent_Sales_Rep__r.Phone}"/>
+                </td>            
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA'}">
+                <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px">
+                    <b>Phone : </b>
+                    <apex:outputText value="{!Quote__c.Agent_Sales_Rep__r.Phone}"/>
+                </td>            
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px">
+                    <b>Tel : </b>
+                    <apex:outputText value="{!Quote__c.Agent_Sales_Rep__r.Phone}"/>
+                </td>            
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px"><b>Phone : </b><apex:outputText value="{!Quote__c.Agent_Sales_Rep__r.Phone}"/></td>            
+            </apex:panelGroup>
+            <td class = "btmBrdr" width="33%" style="font-size:13px;padding-right:5px">
+                <b>Email : </b>
+                <apex:outputText value="{!Quote__c.Agent_Sales_Rep__r.Email}"/>
+            </td>
+        </tr>
+        <tr style="height:22px"> 
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">       
+            <td class = "btmBrdr" colspan="3" width="33%" style="font-size:13px;padding-right:5px;padding-left:3px">
+                <b>Tópico : </b>
+                <apex:outputField value="{!Quote__c.Subject__c}"/>
+            </td>            
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA'}">    
+            <td class = "btmBrdr" colspan="3" width="33%" style="font-size:13px;padding-right:5px;padding-left:3px">
+                <b>Subject : </b>
+                   <b style="font-family: Arial Unicode MS;font-weight: 900;" >
+                <apex:outputField value="{!Quote__c.Subject__c}"/>
+                </b>
+            </td>            
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True }">       
+            <td class = "btmBrdr" colspan="3" width="33%" style="font-size:13px;padding-right:5px;padding-left:3px">
+                <b>Objet : </b>
+                <apex:outputField value="{!Quote__c.Subject__c}"/>
+            </td>            
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False }">       
+            <td class = "btmBrdr" colspan="3" width="33%" style="font-size:13px;padding-right:5px;padding-left:3px">
+                <b>Subject : </b>
+                <apex:outputField value="{!Quote__c.Subject__c}"/>
+            </td>            
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == null}">
+                <td class="rborder"></td>
+            </apex:panelGroup>
+        </tr>
+       <tr style="height:22px"> 
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">       
+            <td class = "btmBrdr" colspan="3" width="33%" style="font-size:13px;padding-right:5px;padding-left:3px">
+                <b>Notar : </b>
+                <apex:outputField value="{!Quote__c.Note__c}"/>
+            </td>            
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA'}">    
+            <td class = "btmBrdr" colspan="3" width="33%" style="font-size:13px;padding-right:5px;padding-left:3px">
+                <b>Note : </b>
+                <apex:outputField value="{!Quote__c.Note__c}"/>
+            </td>            
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True }">       
+            <td class = "btmBrdr" colspan="3" width="33%" style="font-size:13px;padding-right:5px;padding-left:3px">
+                <b> Note  : </b>
+                <apex:outputField value="{!Quote__c.Note__c}"/>
+            </td>            
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False }">       
+            <td class = "btmBrdr" colspan="3" width="33%" style="font-size:13px;padding-right:5px;padding-left:3px">
+                <b>Note : </b>
+                <apex:outputField value="{!Quote__c.Note__c}"/>
+            </td>            
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == null}">
+                <td class="rborder"></td>
+            </apex:panelGroup>
+        </tr>
+        <tr>
+            <td class = "btmBrdr" colspan="3" width="33%" style="font-size:13px;" align="center"> 
+                <img style="WIDTH:444px; HEIGHT:100px;margin-top: 20px" src='{!imageURL}' title="logo" />
+            </td>
+        </tr>
+    </table> 
+    <br/>
+    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'Brazil' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'France'  }">
+        <table cellspacing = "0" cellpadding = "0" border = "0" width = "100%" class = "tbl_main"  >
+                <tr >                    
+                    <td class = "tdCustom" width="3%"><b>Pos</b></td>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                        <td class = "tdCustom" width="30%" ><b>Nicomatic Produto</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India'}">    
+                        <td class = "tdCustom"  width="30%"><b>NICOMATIC P/N</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'China'}">    
+                        <td class = "tdCustom" width="30%"><b>NICOMATIC P/N</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                        <td class = "tdCustom" width="30%"><b>Code NICOMATIC</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                        <td class = "tdCustom" width="30%"><b>NICOMATIC P/N</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                        <td class = "tdCustom" Width="22%"><b>Client Produto</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China'}">  
+                        <td class = "tdCustom" Width="22%"><b>CLIENT P/N</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                        <td class = "tdCustom" Width="22%"><b>Code Client</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                        <td class = "tdCustom" Width="22%"><b>CLIENT P/N</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                        <td class = "tdCustom" width="15%"><b>Prazo de fabricação</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China'}">  
+                        <td class = "tdCustom" width="15%"><b>Lead Time</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                        <td class = "tdCustom" width="15%"><b>Délai</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                        <td class = "tdCustom" width="15%"><b>Lead Time</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                        <td class = "tdCustom" width="8%"><b>Qtde necessária</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China'}">  
+                        <td class = "tdCustom" width="8%"><b>Asked Qty</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                        <td class = "tdCustom" width="8%"><b>Quantité demandée</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                        <td class = "tdCustom" width="8%"><b>Asked Qty</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                        <td class = "tdCustom" width="8%"><b> Qtde do lote</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China'}">  
+                        <td class = "tdCustom" width="8%"><b>Batch Qty</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                        <td class = "tdCustom" width="8%"><b> MOD / Maxi</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                        <td class = "tdCustom" width="8%"><b> Batch Qty</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                        <td class = "tdCustom" width="14%"><b>Preço Unitário &nbsp;(<apex:OutputText value="{!Quote__c.CurrencyISOCode}" />)</b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China'}">  
+                        <td class = "tdCustom" width="14%"><b>Unit Price &nbsp;(<apex:OutputText value="{!Quote__c.CurrencyISOCode}" />)</b></td>
+                    </apex:panelGroup> 
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                        <td class = "tdCustom" width="14%"><b>Prix Unit &nbsp;(<apex:OutputText value="{!Quote__c.CurrencyISOCode}" />)</b></td>
+                    </apex:panelGroup> 
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                        <td class = "tdCustom" width="14%"><b>Unit Price &nbsp;(<apex:OutputText value="{!Quote__c.CurrencyISOCode}" />)</b></td>
+                    </apex:panelGroup>                          
+                </tr>
+                </table>
+                <apex:variable value="{!1}" var="rowNum"/>
+                <apex:repeat value="{!batch}" var="q1">
+                   <table cellspacing = "0" cellpadding = "0" border = "0" width = "100%" class = "tbl_main"  >
+                       <tr>
+                        <td class = "tdCustom" width="3%"><apex:outputText value="{!FLOOR(rowNum)}" style="align:center;"/></td>
+                        <td class = "tdCustom" width="30%"><apex:outputField value="{!q1.q.Name}"/></td>
+                        <td class = "tdCustom" width="22%" ><apex:outputField value="{!q1.q.Client_P_N__c}"/></td>
+                        <td width="15%" class = "tdCustom">
+                            <apex:panelgroup rendered="{!(Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'Brazil' || Quote__c.User_Region1__c == 'China' )}">
+                                
+                                <apex:panelGroup rendered="{!q1.q.Standard_Estimated_Lead_Time__c != 'Other'}">
+                                    <apex:outputText value="{!q1.q.Standard_Estimated_Lead_Time__c}"/>
+                                </apex:panelGroup>
+                                <apex:panelGroup rendered="{!q1.q.Standard_Estimated_Lead_Time__c == 'Other'}">
+                                    <apex:outputText value="{!q1.q.Other_Lead_Time__c}"/>
+                                </apex:panelGroup>
+                            </apex:panelGroup>
+                            <apex:panelgroup rendered="{!Quote__c.User_Region1__c == 'France'}">
+                            <table width="100%" cellpadding="0" cellspacing="0"  border="0" >
+                                <apex:repeat value="{!q1.batch1 }" var="c">
+                                            <apex:panelgroup rendered="{!AND(c.Quote_Line_Item__c == q1.q.Id,c.Id !=null,Quote__c.User_Region1__c == 'France')}">                                 
+                                                <apex:panelGroup rendered="{!c.LeadTime__c != 'Other'}">
+                                                    <tr>
+                                                        <td class = "tdCustom"><apex:outputText value="{!c.LeadTime__c}"/></td>
+                                                    </tr>   
+                                                </apex:panelGroup>
+                                                <apex:panelGroup rendered="{!c.LeadTime__c == 'Other'}">
+                                                    <tr>
+                                                        <td class = "tdCustom"><apex:outputText value="{!c.Other_Lead_Time__c}"/></td>
+                                                    </tr>   
+                                                </apex:panelGroup>
+                                            </apex:panelgroup>
+                                </apex:repeat>    
+                            </table> 
+                            </apex:panelgroup>
+                               
+                        </td>
+                        <td width="8%">
+                            <table width="100%" cellpadding="0" cellspacing="0"  border="0" >                                            
+                                <apex:repeat value="{!q1.batch1 }" var="c">
+                                    <apex:panelgroup rendered="{!AND(c.Quote_Line_Item__c == q1.q.Id,c.Id !=null)}">
+                                        <tr>                                   
+                                            <td class = "tdCustom">
+                                                <apex:outputField value="{!c.Asked_Qty__c}"/>
+                                            </td>
+                                        </tr>
+                                    </apex:panelgroup>                                                  
+                                </apex:repeat>                       
+                            </table> 
+                        </td>
+                        <td width="8%">
+                            <table width="100%" cellpadding="0" cellspacing="0"  border="0" >                                            
+                                <apex:repeat value="{!q1.batch1}" var="c">
+                                    <apex:panelgroup rendered="{!AND(c.Quote_Line_Item__c == q1.q.Id,c.Id !=null)}">
+                                    <tr>                                   
+                                        <td class = "tdCustom">
+                                        <apex:panelGroup rendered="{!c.Max_Quantity__c !=null }">
+                                        <apex:panelGroup rendered="{!c.Sign_for_max_Quantity__c=false }">
+                                        <apex:outputField value="{!c.Quantity_Text__c}"/>&nbsp;/&nbsp;<apex:outputField value="{!c.Max_quantity_Pdf__c}"/>
+                                        </apex:panelGroup>
+                                        <apex:panelGroup rendered="{!c.Sign_for_max_Quantity__c=true }">
+                                        <apex:outputField value="{!c.Quantity_Text__c}"/>&nbsp;/&nbsp;<apex:outputField value="{!c.Max_quantity_Pdf__c}"/>+
+                                        </apex:panelGroup>
+                                        </apex:panelGroup>
+                                        <apex:panelGroup rendered="{!c.Max_Quantity__c ==null }">
+                                            <apex:outputField value="{!c.Quantity_Text__c}"/>
+                                        </apex:panelGroup>
+                                        </td>                                    
+                                    </tr>                               
+                                    </apex:panelgroup>
+                                </apex:repeat>                       
+                            </table> 
+                        </td>
+                        <td width="14%">
+                            <table width="100%" cellpadding="0" cellspacing="0"  border="0"  >                                            
+                                <apex:repeat value="{!q1.batch1}" var="c">
+                                    <apex:panelgroup rendered="{!AND(c.Quote_Line_Item__c == q1.q.Id,c.Id !=null)}">
+                                        <tr>
+                                            <td class = "tdCustom">
+                                                <apex:outputText value="{!c.Unit_Price_Text__c}"/>
+                                           </td>
+                                        </tr>
+                                    </apex:panelgroup>       
+                                </apex:repeat>                       
+                            </table>
+                        </td>
+                    </tr>
+                    <tr > 
+                        <td class = "rBorder" width="2%"></td>                      
+                        <td colspan="3" class = "tdCustom" width="49%">
+                           <b> <apex:outputField value="{!q1.q.Description__c}"/></b>
+                        </td>                       
+                        <td colspan="3" class = "tdCustom" width="49%">
+                            <apex:outputField value="{!q1.q.Comments__c}"/>
+                        </td>
+                    </tr>
+                    <apex:panelgroup rendered="{!q1.q.Quote_Validity__c!=null}">
+                        <tr style="page-break-inside:avoid;"> 
+                            <td class = "rBorder"></td>                       
+                            <td colspan="6" class = "tdCustom">
+                                <i>
+                                    <center><apex:outputfield value="{!q1.q.Quote_Validity__c}" style="padding-left:5px;"/>.</center>
+                                </i>
+                            </td>
+                        </tr>
+                    </apex:panelgroup>
+                    <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+                   </table>
+                </apex:repeat>
+    </apex:panelgroup>
+    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'USA' }">   
+        <table cellspacing = "0" cellpadding = "0" border = "0" width = "100%" class = "tbl_main">
+            <tr>
+                <td class = "tdCustom" width="3%"><b>&nbsp;Pos&nbsp;</b></td>
+                <td class = "tdCustom" width="34%"><b>NICOMATIC P/N</b></td>
+                <td class = "tdCustom" width="26%"><b>CLIENT P/N</b></td>
+                 <td class = "tdCustom" width="15%"><b>Lead Time</b></td>
+                <td class = "tdCustom" width="8%"><b>Quantity</b></td>
+                <td class = "tdCustom" width="14%"><b>Unit Price &nbsp;(<apex:OutputText value="{!Quote__c.CurrencyISOCode}" />)</b></td>
+            </tr>  
+          </table>                    
+            <apex:variable value="{!1}" var="rowNum"/>
+            <apex:repeat value="{!batch}" var="q1"> 
+            <table cellspacing = "0" cellpadding = "0" border = "0" width = "100%" class = "tbl_main">
+                <tr style="page-break-inside:avoid; ">
+                    <td class = "tdCustom" width="3%"><apex:outputText value="{!FLOOR(rowNum)}"/></td>
+                    <td class = "tdCustom" width="34%"><apex:outputField value="{!q1.q.Name}"/></td>
+                    <td class = "tdCustom" width="26%"><apex:outputField value="{!q1.q.Client_P_N__c}"/></td>
+                    <apex:panelGroup rendered="{!q1.q.Standard_Estimated_Lead_Time__c != 'Other'}">
+                        <td class = "tdCustom" width="15%"><apex:outputField value="{!q1.q.Standard_Estimated_Lead_Time__c}"/></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!q1.q.Standard_Estimated_Lead_Time__c == 'Other'}">
+                        <td class = "tdCustom" width="15%"><apex:outputField value="{!q1.q.Other_Lead_Time__c}" /></td>
+                    </apex:panelGroup>
+                    <td width="8%">
+                        <table width="100%" cellpadding="0" cellspacing="0"  border="0" >                                            
+                            <apex:repeat value="{!q1.batch1 }" var="c">
+                                <apex:panelgroup rendered="{!AND(c.Quote_Line_Item__c == q1.q.Id,c.Id !=null)}">
+                                    <tr>                                   
+                                        <td class = "tdCustom">
+                                            <apex:outputText value="{0, number}">
+                                                <apex:param value="{!c.Quantity__c}" />
+                                            </apex:outputText>
+                                        </td>                                    
+                                    </tr>
+                                </apex:panelgroup>
+                            </apex:repeat>                       
+                        </table>
+                    </td>
+                    <td width="14%">
+                        <table width="100%" cellpadding="0" cellspacing="0"  border="0"  >                                            
+                            <apex:repeat value="{!q1.batch1}" var="c">
+                                <apex:panelgroup rendered="{!AND(c.Quote_Line_Item__c == q1.q.Id,c.Id !=null)}">
+                                    <tr>
+                                        <td class = "tdCustom">
+                                           <apex:OutputText value="{!c.Unit_Price_Text__c}" />
+                                         </td>
+                                    </tr>
+                                </apex:panelgroup>      
+                            </apex:repeat>                       
+                        </table>
+                    </td>
+                </tr>
+                <tr> 
+                    <td class = "rBorder"></td> 
+                    <apex:panelGroup rendered="{!q1.q.Description__c!=null}">                     
+                        <td colspan="2" class = "tdCustom"><b><apex:outputField value="{!q1.q.Description__c}"/></b></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!q1.q.Description__c==null}">                     
+                        <td colspan="2" class = "tdCustom" height="20pt" width="49%"></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!q1.q.Comments__c!=null}">   
+                        <td colspan="3" class = "tdCustom" width="49%" ><apex:outputField value="{!q1.q.Comments__c}"/></td>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!q1.q.Comments__c==null}">                     
+                        <td colspan="3" class = "tdCustom" height="20pt"></td>
+                    </apex:panelGroup>
+                </tr>
+                <tr> 
+                    <td class = "rBorder"></td>                       
+                    <td colspan="5" class = "tdCustom">
+                        <i><center> <apex:outputfield value="{!q1.q.Quote_Validity__c}" style="padding-left:5px;"/>.</center></i>
+                    </td>
+                </tr>
+                <apex:variable var="rowNum" value="{!rowNum + 1}"/>     
+                </table>
+            </apex:repeat>
+        
+    </apex:panelgroup>           
+    <br/>
+    <table width="100%" border="1" cellpadding="0" cellspacing="0" style="page-break-inside:auto" id='tt'>
+        <tr id='tc' style="page-break-inside:avoid">
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                <td colspan="2" align="center" style="border-left: 1px solid #000;border-top: 1px solid #000;">
+                    <font aign="center" style="font-size:13px" >Pour tous les produits exceptés CMM et Jumpers, minimum de 50 € H.T. par ligne de commande et 150 € H.T de commande.<br/> 
+                        MOD = Minimum de commande par livraison.<br/>
+                       Validité de l'offre 48h date de l'offre, si délai Premium proposé.<br/>
+                        Le fait de passer commande implique l'adhésion entière et sans réserve de l'acheteur aux conditions générales de vente de NICOMATIC SA.
+                    </font>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                <td colspan="2" align="center" style="border-left: 1px solid #000;border-top: 1px solid #000;">
+                     <font aign="center" style="font-size:13px" >
+                     For all products except CMM and Jumpers, minimum order per line is 50 € and minimum total amount order is 150 €.<br/>
+                                                   MOD = Minimum order per delivery.<br/>
+                        In case of Premium service, the quotation is valid for 48h date of the quotation.<br/>
+                        The buyer that places an order with us commits himself to respect NICOMATIC General Terms of Sale.
+                    </font>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'China'}">
+                    <td colspan="2" align="center" style="border-left: 1px solid #000;border-top: 1px solid #000;">
+                        <font aign="center" style="font-size:13px" >
+                            Prices will be reviewed if order qtys are less than our quoted minimum.<br/>         
+                            <apex:panelGroup rendered="{!Quote__c.CurrencyIsoCode == 'USD'}">
+                                All quoted prices are exclusive of tax.<br/>  
+                            </apex:panelGroup>
+                            <apex:panelGroup rendered="{!Quote__c.CurrencyIsoCode != 'USD'}">                           
+                                All quoted prices are included the 17% VAT.<br/> 
+                            </apex:panelGroup>                          
+                            Lead-times dependent upon plant capacity at time of order.<br/>
+                            <apex:panelGroup rendered="{!Quote__c.CurrencyIsoCode != 'USD'}">                              
+                                Invoice Minimum by shipment RMB3000 or the buyer should pay the handling charge. <br/>
+                            </apex:panelGroup>        
+                            <apex:panelGroup rendered="{!Quote__c.CurrencyIsoCode == 'USD'}">
+                                Invoice Minimum by shipment USD 500 or the buyer should pay the handling charge USD 50<br/>
+                            </apex:panelGroup>                              
+                            Tooling Modification: 100% payment <br/>                             
+                            The buyer that places an order with us commits himself to respect NICOMATIC General Terms of Sale.                              
+                        </font>
+                    </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'Brazil'  }">
+                    <td colspan="2" align="center" style="border-left: 1px solid #000;border-top: 1px solid #000;">
+                        <font aign="center" style="font-size:13px" >
+                            All quoted prices are exclusive of applicable local taxes<br/>                                                                    
+                            The buyer that places an order with us commits himself to respect NICOMATIC General Terms of Sale.                              
+                        </font>
+                    </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'USA'  }">
+                <td colspan="2" align="center" style="border-left: 1px solid #000;border-top: 1px solid #000;" >
+                    <font aign="center" style="font-size:13px" >NCNR. $50.00 Order/Release Minimum. All orders must be released within one year.<br/>
+                        The buyer that places an order with us commits himself to respect NICOMATIC General Terms of Sale.                             
+                    </font>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == null  }">
+                <td class="rborder"></td>
+            </apex:panelGroup>
+        </tr>
+        <tr id='tc' style="page-break-inside:avoid;">
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'Brazil' ||  Quote__c.User_Region1__c == 'China' ||  Quote__c.User_Region1__c == 'USA'  }">
+                <td colspan="1" width="58%" style="font-size:13px;padding-left:5px;border-left: 1px solid #000;" >
+                    <font style="padding-letf:5px;">Delivery time is not contractual and will be confirmed at the order
+                        acknowledgement by NICOMATIC.
+                    </font>
+                </td>
+            </apex:panelGroup>
+             <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                <td colspan="1" width="58%" style="font-size:13px;padding-left:5px;border-left: 1px solid #000;" >
+                   <font style="padding-letf:5px;">Les délais indicatifs sont non contractuels, et sont confirmés avec
+                        l'accusé de réception de votre commande par NICOMATIC.
+                    </font>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                <td colspan="1" width="58%" style="font-size:13px;padding-left:5px;border-left: 1px solid #000;" >
+                    <font style="padding-letf:5px;">Lead time is not contractual and will be confirmed at the order
+                        acknowledgement by NICOMATIC.
+                    </font>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' }">
+                <td colspan="1" width="42%" style="font-size:13px;padding-left:5px;">Delivery Condition :<apex:outputField value="{!Quote__c.Delivery_Condition__c}"/>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'USA'  }">
+                <td colspan="1" width="42%" style="font-size:13px;padding-left:5px;white-space: pre;" >Delivery Condition :<apex:outputField value="{!Quote__c.Delivery_Condition__c}"/>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                <td colspan="1" width="42%" style="font-size:13px;padding-left:5px;">Condições de entrega :<apex:outputField value="{!Quote__c.Delivery_Condition__c}"/>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                <td colspan="1" width="42%" style="font-size:13px;padding-left:5px;">Conditions Livraison :<apex:outputField value="{!Quote__c.Delivery_Condition__c}"/>
+                <apex:panelGroup rendered="{!Quote__c.Bill_To_Country__c=='France'}">
+                <apex:panelGroup rendered="{!Quote__c.Delivery_Condition__c == 'EXW' || Quote__c.Delivery_Condition__c == 'Ex Works-Bons-en-Chablais-France' }">
+                <br/>Forfait de 12 euros par livraison en France
+                </apex:panelgroup></apex:panelGroup>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                <td colspan="1" width="42%" style="font-size:13px;padding-left:5px;">Delivery Condition :<apex:outputField value="{!Quote__c.Delivery_Condition__c}"/>
+                <apex:panelGroup rendered="{!Quote__c.Bill_To_Country__c=='France'}">
+                <apex:panelGroup rendered="{!Quote__c.Delivery_Condition__c == 'EXW' || Quote__c.Delivery_Condition__c == 'Ex Works-Bons-en-Chablais-France'}">
+                <br/>Forfait de 12 euros par livraison en France
+                </apex:panelgroup></apex:panelGroup>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == null  }">
+                <td class="rborder"></td>
+            </apex:panelGroup>
+        </tr>
+        <tr id='tc' style="page-break-inside:avoid">
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'Brazil' || Quote__c.User_Region1__c == 'USA' }">
+                <td colspan="1" width="58%" style="font-size:13px;padding-left:5px;border-left: 1px solid #000;">
+                    Please send your order (Fax or Email) to : <br/> 
+           <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India'}">
+                  <table style="padding-right:5px">
+                <tr>
+                     <td colspan="2">
+                       <font style="padding-left:1px;font-size:13px;">
+                         <b>Nicomatic India Electronics Pvt Ltd</b>
+                       </font> 
+                   </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="width:170px">
+                     <font style="padding-left:1px;font-size:13px;"> 
+                           <apex:outputField value="{!Quote__c.User_Street__c}"/>
+                    </font> 
+                  </td>
+                    <td></td>
+                 </tr>
+                 </table> 
+             </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'China'}">
+                        <font ><b>Nicomatic (Tianjin) Electronics Co. Ltd,</b><br/></font> 
+                    </apex:panelGroup>
+                     <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                        <font >
+                            <b>Nicomatic South America LTDA,</b>
+                            <br/>
+                        </font> 
+                    </apex:panelGroup>
+                     <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'USA'}">
+                        <font >
+                            <b>Nicomatic North America</b>
+                            <br/>
+                        </font> 
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'USA' ||Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'Brazil'}">
+                      <apex:outputField value="{!Quote__c.User_Street__c}"/><br/>
+                    </apex:panelGroup>
+                    <font >
+                         <apex:outputField value="{!Quote__c.User_City__c}"/>,
+                    </font>
+                    
+                    <font > 
+                        <apex:outputField value="{!Quote__c.User_State__c}"/>&nbsp;&nbsp;<apex:outputField value="{!Quote__c.User_Postal_Code__c}"/>,&nbsp;<apex:outputField value="{!Quote__c.User_Country__c}"/> 
+                    </font><br/>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                        <font >Telefone : <apex:outputField value="{!Quote__c.From_Phone__c}"/>
+                        </font><br/>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China'  || Quote__c.User_Region1__c == 'USA' }">
+                        <font >Phone:&nbsp;&nbsp; <apex:outputField value="{!Quote__c.From_Phone__c}"/></font><br/>
+                    </apex:panelGroup>
+                    <font >Fax:&nbsp;&nbsp; <apex:outputField value="{!Quote__c.User_Fax__c}"/></font> <br/>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c != 'USA'}">
+                    <font >Email:&nbsp;&nbsp; <apex:outputText value="{!Quote__c.From_Email__c}"/><br/></font>
+                    </apex:panelGroup>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'USA'}">
+                        <font >Email:&nbsp;&nbsp; sales@nicomatic.net<br/></font>
+                    </apex:panelGroup>
+                </td>
+            </apex:panelGroup>
+            
+           <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True }">
+                <td colspan="1" width="58%" style="font-size:13px;padding-left:5px;border-left: 1px solid #000;">
+                   Adressez votre commande (Fax ou Email) à: <br/> 
+                    <table>
+                        <tr>
+                         <td colspan="2">
+                             <font ><b>Nicomatic SA</b><br/></font> 
+                            </td>
+                          <td></td>
+                      </tr>
+                      <tr>
+                        <td  style="width:140px">
+                            <font ><apex:outputField value="{!Quote__c.User_Street__c}"/></font>  <br/>
+                        </td>
+                        <td></td>
+                        </tr>
+                    </table> 
+                    <font > <apex:outputField value="{!Quote__c.User_City__c}"/>,&nbsp;<apex:outputField value="{!Quote__c.User_Postal_Code__c}"/>,&nbsp; <apex:outputField value="{!Quote__c.User_Country__c}"/> </font><br/>
+                    <font >Tel:&nbsp;&nbsp; <apex:outputField value="{!Quote__c.Author_Phone_New__c}"/></font><br/>
+                    <font >Fax:&nbsp;&nbsp; <apex:outputField value="{!Quote__c.Author_Fax_New__c}"/></font> <br/>
+                    <font >Email:&nbsp;&nbsp; <apex:outputText value="{!Quote__c.Author_Email_New__c}"/><br/></font>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False }">
+                <td colspan="1" width="65%" style="font-size:13px;padding-left:5px;border-left: 1px solid #000;">
+                Please send your order (Fax or Email) to : <br/> 
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <font >
+                                <b>Nicomatic SA</b>
+                                <br/>
+                            </font> 
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td  style="width:140px">
+                            <font >
+                                <apex:outputField value="{!Quote__c.User_Street__c}"/>
+                            </font>  <br/>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>            
+                <font ><apex:outputField value="{!Quote__c.User_City__c}"/>,&nbsp;<apex:outputField value="{!Quote__c.User_Postal_Code__c}"/>,&nbsp; <apex:outputField value="{!Quote__c.User_Country__c}"/> </font><br/>
+                <font >Phone:&nbsp;&nbsp; <apex:outputField value="{!Quote__c.Author_Phone_New__c}"/></font><br/>
+                <font >Fax:&nbsp;&nbsp; <apex:outputField value="{!Quote__c.Author_Fax_New__c}"/></font> <br/>
+                <font >Email:&nbsp;&nbsp; <apex:outputText value="{!Quote__c.Author_Email_New__c}"/><br/></font>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA' }">
+                <td colspan="1" width="42%" valign="top" style="font-size:13px"><font style="padding-left:5px;padding-right:7px">Payment Terms : </font><apex:outputField value="{!Quote__c.Payment_Terms__c}"/>
+                    <br/><br/>
+                    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA' }">
+                        <font style="font-size:13px;padding-left:5px;padding-right:7px">Quote Validity : </font><apex:outputText value="{!Quote__c.Quote_Validity__c}"/>
+                    </apex:panelGroup>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'Brazil'}">
+                <td colspan="1" width="42%" valign="top" style="font-size:13px"><font style="padding-left:5px;padding-right:7px">Condições de pagamento : </font><apex:outputField value="{!Quote__c.Payment_Terms__c}"/>
+                <br/><br/>
+                <font style="font-size:13px;padding-left:5px;padding-right:7px">Quote Validity : </font><apex:outputText value="{!Quote__c.Quote_Validity__c}"/>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True }">
+                <td colspan="1" width="42%" valign="top" style="font-size:13px"><font style="padding-left:5px;padding-right:7px">Conditions de paiement : </font><apex:outputField value="{!Quote__c.Payment_Terms__c}"/>
+                <br/><br/>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False }">
+                <td colspan="1" width="42%" valign="top" style="font-size:13px"><font style="padding-left:5px;padding-right:7px">Payment Terms : </font><apex:outputField value="{!Quote__c.Payment_Terms__c}"/>
+                <br/><br/>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == null  }">
+                <td class="rborder"></td>
+            </apex:panelGroup>
+        </tr>
+    </table>
+    <br/>
+    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA' || Quote__c.User_Region1__c == 'Brazil'  }">
+        <font style="font-size:13px">Should you require any additional information, do not hesitate to contact us. Best of Regards.<br/></font>
+    </apex:panelGroup>
+    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True }">
+        <font style="font-size:13px">Restant à votre entière disposition pour tout renseignement complémentaire, veuillez agréer Madame, Monsieur, l'assurance de nos sincères salutations.<br/></font>
+    </apex:panelGroup>
+    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False }">
+        <font style="font-size:13px">Should you require any additional information, do not hesitate to contact us. Best of Regards.<br/></font>
+    </apex:panelGroup>
+    <br/>
+    <table border="1" cellpadding="0" cellspacing="0" width="100%" style="page-break-inside:auto" id='tt'>
+        <tr id='tc' style="page-break-inside:avoid">
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'USA' || Quote__c.User_Region1__c == 'Brazil'  }">
+                <td  width="25%" align="center" style="font-size:13px;border-left: 1px solid #000;border-top: 1px solid #000;padding-top:10px;" valign="top">CUSTOMER SERVICE<br/><br/><br/><apex:outputField value="{!Quote__c.From1__c}"/><br/><br/></td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                <td  width="25%" align="center" style="font-size:13px;border-left: 1px solid #000;border-top: 1px solid #000;padding-top:10px;" valign="top">SERVICE CLIENT<br/><br/><br/><apex:outputText value="{!Quote__c.From2__r.Name}"/></td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                <td  width="25%" align="center" style="font-size:13px;border-left: 1px solid #000;border-top: 1px solid #000;padding-top:10px;" valign="top">CUSTOMER SERVICE<br/><br/><br/><apex:outputText value="{!Quote__c.From2__r.Name}"/></td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'Brazil' ||Quote__c.User_Region1__c == 'France'}">
+                <td width="25%" align="center" style="font-size:13px;border-left: 1px solid #000;border-top: 1px solid #000;padding-top:10px;" valign="top">VISA
+                <apex:panelGroup rendered="{!Quote__c.CreatedBy.LastName == 'Chirina'}">
+                    <br/><img style="padding-left:15px" src='{!URLFOR($Resource.TatyanaSignature)}' title="logo" />
+                </apex:panelGroup>
+                 <apex:panelGroup rendered="{!Quote__c.CreatedBy.firstname== 'Alexis'}">
+                    <br/><img style="padding-left:15px" src='{!URLFOR($Resource.alexis_signature2)}' title="logo" height="50px" width="100px"/>
+                </apex:panelGroup>
+                
+                 <apex:panelGroup rendered="{!Quote__c.From2__r.Name== 'Catherine Matringe'}">
+                    <br/><img style="padding-left:15px" src='{!URLFOR($Resource.catherine)}' title="logo" height="50px" width="100px"/>
+                </apex:panelGroup>
+                 <apex:panelGroup rendered="{!Quote__c.From2__r.Name== 'Christine MILLIEZ'}">
+                    <br/><img style="padding-left:15px" src='{!URLFOR($Resource.Christine)}' title="logo" height="50px" width="100px"/>
+                </apex:panelGroup>
+                <apex:panelGroup rendered="{!Quote__c.From2__r.Name== 'Delphine Michellier'}">
+                    <br/><img style="padding-left:15px" src='{!URLFOR($Resource.Delphine)}' title="logo" height="50px" width="100px"/>
+                </apex:panelGroup>
+                <apex:panelGroup rendered="{!Quote__c.From2__r.Name== 'Jeannine Lacroix'}">
+                    <br/><img style="padding-left:15px" src='{!URLFOR($Resource.Lacroix)}' title="logo" height="50px" width="100px"/>
+                </apex:panelGroup>
+                <apex:panelGroup rendered="{!Quote__c.From2__r.Name== 'Laétitia BOCCAGNY'}">
+                    <br/><img style="padding-left:15px" src='{!URLFOR($Resource.Laetitia)}' title="logo" height="50px" width="100px"/>
+                </apex:panelGroup>
+                 <apex:panelGroup rendered="{!Quote__c.From2__r.Name== 'Nadège Kadi'}">
+                    <br/><img style="padding-left:15px" src='{!URLFOR($Resource.Kadi)}' title="logo" height="50px" width="100px"/>
+                </apex:panelGroup>
+                
+              </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'USA'}">
+                <td width="25%" align="center" style="font-size:13px;border-left: 1px solid #000;border-top: 1px solid #000;padding-top:10px;" valign="top" > </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'Brazil'  }">
+                <td width="25%" align="center" style="font-size:13px;border-left: 1px solid #000;border-top: 1px solid #000;" valign="top"><br/>Sales Manager / Managing Director</td>
+            </apex:panelGroup>
+             <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'USA'}">
+                <td width="25%" align="center" style="font-size:11px;border-left: 1px solid #000;border-top: 1px solid #000;" valign="top"><br/>REGIONAL SALES MANAGER</td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == True}">
+                <td width="25%" align="center" style="font-size:13px;border-left: 1px solid #000;border-top: 1px solid #000;padding-top:10px;" valign="top">Responsable des ventes / Direction
+                <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France'}">
+               <br/><br/><br/>Nadège Kadi
+                </apex:panelgroup>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France' && Quote__c.Account_Name__r.French_Translation__c == False}">
+                <td width="25%" align="center" style="font-size:13px;border-left: 1px solid #000;border-top: 1px solid #000;padding-top:10px;" valign="top">Sales Manager / Managing Director
+                <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France'}">
+                <br/><br/><br/>Nadège Kadi
+                </apex:panelgroup>
+                </td>
+            </apex:panelGroup>
+             <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'India' || Quote__c.User_Region1__c == 'China' || Quote__c.User_Region1__c == 'Brazil'}">
+                <td width="25%" align="center" style="font-size:13px;border-left: 1px solid #000;border-top: 1px solid #000;padding-top:10px;" valign="top" >VISA  </td>      
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'France'}">
+                <td width="25%" align="center" style="font-size:13px;border-left: 1px solid #000;border-top: 1px solid #000;padding-top:10px;" valign="top" >VISA
+            <apex:panelGroup rendered="{!Quote__c.Potential1__c<10000}">
+             <br/><br/><img style="padding-left:15px" src='{!URLFOR($Resource.Kade)}' title="logo" height="50px" width="100px"/>
+                </apex:panelGroup>
+                </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'USA'}">
+                <td width="25%" align="center" style="font-size:13px;border-left: 1px solid #000;border-top: 1px solid #000;padding-top:10px;" valign="top" > </td>
+            </apex:panelGroup>
+            <apex:panelGroup rendered="{!Quote__c.User_Region1__c == null}">
+                <td class="rborder"></td>
+            </apex:panelGroup>
+        </tr>
+    </table>
+    <br/>
+    <table style="page-break-after:auto;">
+        <tr>
+            <td>
+                <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'USA' }">
+                     <div style = "font-size:13px; padding: 10px 0; border: 1px solid #000;">
+                        <center> PARTIAL LIST OF CONDITIONS RELATIVE TO ALL QUOTATIONS</center>
+                     </div>
+                      <div style = "height: auto; overflow: hidden; border: 1px solid #000; border-top: none; padding: 10px;font-size:13px;" >
+                        The offer embodied in this quotation shall remain in effect for 90 days from the date shown above, and is subject to approval of credit. Deliveries quoted are subject to prior sale. The purchaser agrees to save this company harmless for infringement of any letter of patents, copyrights, trademarks, and trade names which may arise thru the filling of the order of the purchaser by this company. Any deviation of quantity, quality or specification from
+                        the purchaser’s order must be brought to the 
+                         of this company within 15 days receipt of material.
+                        Nicomatic products are warranted to be free from defects in material and workmanship for a period of 12 months from the date of shipment provided they are used according to Nicomatic’s recommended usage. Nicomatic’s liability is limited to repair of, refund or purchase price paid for, or replacement in kind at Nicomatic’s sole option. Except as stated above, Nicomatic makes no warranties with respect to Nicomatic products or their
+                        quality and hereby expressly disclaims all other warranties of any kind, whether express, implied or statutory, including but not limited to the implied warranties of merchantability and of fitness for a particular purpose (and any warranty of non-infringement).
+                        Under no circumstances shall Nicomatic be liable for any special, indirect, incidental or consequential damages of any kind or nature whatsoever arising out of or in any way related to its products or the use or inability to use its products, including, without limitation, lost profits, lost goodwill, and whether arising out of breach of warranty, breach of contract, tort (including negligence), strict liability or otherwise, even if advised of the possibility of
+                        such damage or if such damage could have been reasonably foreseen.
+                        Responsibility of this company shall cease upon delivery to and receipt by common carrier. This company shall not be held responsible or liable for any loss, damage, detention or delay caused by fire, strike, civil or military authority, or by insurrection or riot, or by any other cause which is unavoidable or beyond its reasonable control. All tools, dies, and fixtures made by this company are to remain our property, after completion of order,
+                        unless otherwise specified. Any change in material, quantity, specifications, or tolerances might affect the price quoted above.
+                        We thank you the opportunity to submit this quotation.
+                     </div>
+                </apex:panelGroup>
+            </td>
+        </tr>
+    </table>
+    <apex:panelGroup rendered="{!Quote__c.User_Region1__c == 'China' }">
+        <table border="1" cellpadding ="0" cellspacing="0" width="100%" style="page-break-before:always">
+            <tr>
+                <td>
+                <table width="100%" cellpadding ="0" cellspacing="0"><tr><td style="font-size:13px"><center>IF YOUR ORDER HAS NOT BEEN PREVIOUSLY ACKNOWLEDGED, THIS SHALL CONSTITUTE AN ACKNOWLEDGEMENT AND THE FOLLOWING CONDITIONS APPLY</center></td></tr>
+                    <tr>
+                        <td style="font-size:13px">
+                            <center>
+                                <u>CONDITIONS OF SALE</u>
+                            </center>
+                        </td>
+                    </tr>
+                </table>
+                </td>
+            </tr>
+        </table>
+        <table width="100%" cellpadding ="0" cellspacing="0" border="1"  style="border-top:none;">
+            <tr>
+                <td width="50%" style="font-size:7px;border-top:none;">
+                    <table>
+                        <tr>
+                            <td valign="top" style="font-size:8px">
+                                1.  Acceptance of Buyer’s order is expressly made conditional on assent to the terms and conditions set forth herein and on attachment(s) hereto and they shall constitute the complete agreement between the parties. These terms and conditions may not be varied, or Buyer’s order terminated in any manner, unless by a written agreement with legal consideration subsequently signed by an authorised official of ITT Industries (Tianjin) Ltd. (also referred to herein as “Company”). Other representatives of the Company are not authorised to vary the conditions herein set forth. Failure to specifically dissent to these terms and conditions within a reasonable time or Buyer’s acceptance of any goods covered by this acknowledgement shall constitute acceptance of said terms and conditions and they shall be controlling in every case. <br/><br/>
+
+                                2. Unless stated to the contrary on the face hereof, all goods furnished hereunder will be shipped F.O.B. point of shipment, and title in and the right of possession to such goods pass to the Buyer upon the Company’s delivery to carrier at point of shipment. <br/><br/>
+
+                                3. Unless stated to the contrary on the face hereof, prices on the goods covered by this acknowledgement are firm for thirty (30) days from date of this acknowledgement. Any goods which the Buyer requires to be shipped subsequent to thirty (30) days from said date are subject to price changes made from date of acknowledgement to date of shipment. <br/><br/>
+
+                                4. Tooling, set-up, fitting-up, drawings, design information and partial preparation charges when invoiced cover only part of the cost thereof to the Company. The Buyer does not acquire any right, title or interest in any tooling, set-up, fitting-up, drawings, design information or invention resulting therefrom. <br/><br/>
+
+                                5. All partial preparation charges shall be due within thirty (30) days of first article approval. Acceptance/rejection of first article must be made immediately but in no event later than thirty days after date of first article shipment, and such acceptance/rejection shall be based solely on the parts meeting the specifications contained in the Company’s drawing for said part. Failure of the Buyer to submit in writing a rejection of first article within thirty (30) days after shipment shall be an admission by Buyer and conclusive proof that such goods are accepted. <br/><br/>
+
+                                6. All shipping dates are tentative. The Company will not be responsible for delays or non-performance, directly or indirectly, caused by governmental regulations or requirements, acts of God, unavailability of materials, work stoppages, slowdowns, boycotts, and other causes (whether or not similar in nature to any of these hereinbefore specified) beyond the Company’s reasonable control. <br/><br/>
+
+                                7. This Company’s extensive line of goods requires close co-ordination of the Buyer’s requirements with the Company’s production schedules to avoid possible delays in shipment. Accordingly, the Company reserves the right to ship approximately fourteen (14) days in advance of shipping date. <br/><br/>
+
+                                8. The Company warrants that the goods delivered hereunder shall be free from defects in material, workmanship and fabrication. The WARRANTY shall extend for a period of (a) one (1) year after date of delivery of such goods to Buyer or (b) that period specified otherwise on the front of this document (the greater of such periods (a) or (b) hereinbefore to be known as “Warranty Period”). THE COMPANY MAKES NO WARRANTY EXPRESS, IMPLIED, (INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY AND FITNESS FOR INTENDED PURPOSE), OR STATUTORY, OTHER THAN THE FOREGOING EXPRESS WARRANTY. Failure of Buyer to submit any claim hereunder within the Warranty Period after receipt of such goods shall be an admission by Buyer and conclusive proof that such articles are in every respect as warranted and shall release the Company from any and all claims for damage or loss sustained by Buyer. In the event Buyer submits a claim for breach of warranty within the required Warranty Period, the parties agree that Buyer’s sole and exclusive remedy shall be the repair or replacement of such defective goods or a refund of the price of the defective goods. In no event shall the Company be liable for incidental or consequential damages or special, indirect or incidental damages arising out of, or as the result of, the sale, delivery, non-delivery, use of loss of use of goods or any part thereof, even though the Company has been negligent. This warranty is not intended to cover consumer products. Goods delivered hereunder are not designed, intended, or authorised for use as components in systems intended for surgical implant into the body, or other applications intended to support or sustain life, or for any other application in which the failure of the Company product could create a situation where personal injury or death may occur. Should Buyer purchase or use Company goods for any such unintended or authorised application, Buyer shall indemnify and hold Company and its officers, employees subsidiaries, agents, and affiliates harmless against all claims, costs, damages, and expenses, and reasonable attorney fees arising out of, directly or indirectly, any claim of personal injury or death associated with such unintended or unauthorised use, even if such claim alleges that Company was negligent regarding the design or manufacture of the goods. Any lawsuit or other action based upon breach of this contract or upon any other claim arising out of this sale (other than an action by the Company for any amount due to Company by Buyer) must be commenced within one (1) year from the date of the tender or delivery by the Company. <br/><br/>
+
+                                9. The Company agrees to indemnify and save Buyer harmless from third party claims by reason of known infringement of any patent, trademark or copyright relating to goods furnished hereunder.<br/><br/>
+
+                                10. Orders accepted by the Company cannot by countermanded or shipments deferred or goods returned except with authorisation from the Company and the Company accepts no responsibility for goods returned without such authorisation. When return of material is authorised by the Company, shipping charges on said returned material are to be prepaid F.O.B. Destination unless otherwise noted by the Company in its authorisation to return. The Company shall not issue credit on any product which has been altered or defected in any way or upon which additional operations have been performed.<br/><br/>
+
+
+                                11. Contracts or orders are not subject to cancellation, change, reduction in amount, or suspension of 
+                                deliveries except with the Company’s consent and upon terms which indemnify it against loss; in 
+                                the event Buyer cancels any order or portion thereof or fails to meet any obligation hereunder 
+                                causing cancellation or rescheduling of any order or portion thereof or requests a rescheduling of 
+                                scheduled shipments and such request is accepted by the Company, Buyer agrees to pay, at the 
+                                Company’s option, cancellation or reschedule charges as follows:<br/><br/>
+                                 
+                                a. Any and all partial preparation charges then due or which may become due. 
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="50%" style="font-size:7px;border-top:none; " valign="top">
+                    <table>
+                        <tr>
+                            <td valign="top" style="font-size:8px">b. Sixty (60) to ninety (90) days prior to scheduled delivery, Buyer pays for all unique component 
+                                parts at fair market value. <br/><br/>
+
+                                c. Forty-five (45) to sixty (60) days prior to scheduled delivery, Buyer pays for all unique 
+                                component parts and work in process at fair market value. <br/><br/>
+
+                                d. Zero (0) to forty-five (45) days prior to scheduled delivery, Buyer cannot cancel or reschedule 
+                                and will be shipped and billed to prior scheduled delivery. <br/><br/> 
+
+                                In the event that the Buyer does not accept shipment on the total purchase quantity within twelve 
+
+                                (12) months after receipt by the Company of Buyer’s order, the Company reserves the right to:<br/><br/> 
+                                a. Adjust unit price applicable to this shipped quantity and to bill the Buyer for the accumulated 
+                                differences. <br/><br/>
+                                b. Charge cancellation or rescheduling fees.<br/><br/> 
+                                12. Factory service by personnel from either the People’s Republic of China or the United Sates for 
+                                loaned or purchased items, if required, is available at a charge. Contact the Company for applicable 
+                                fees. Spare and replacement parts for the goods, can be purchased from the Company. <br/><br/> 
+                                13. The Company shall have the right to suspend or cancel this agreement at any time upon Buyer 
+                                making an assignment for the benefit of creditors; or becoming bankrupt or insolvent; or upon a 
+                                petition being filed in a court of competent jurisdiction proposing the appointment of a receiver; or 
+                                in the event that the Buyer be adjudicated bankrupt or insolvent or reorganised under the provisions 
+                                of any applicable bankruptcy or insolvency act. <br/><br/> 
+
+                                14. In addition to the rights and remedies reserved herein, the Company shall have all rights and 
+                                remedies conferred by law and shall not be required to proceed with performance of the contract 
+                                arising herefrom, if Buyer is in default to the Company under this or any other contract. <br/><br/>
+
+                                15. The Company disclaims any liability for damages for delays in delivery or non-delivery of goods 
+                                ordered caused in whole or in part by shortages or unavailability of energy and/or materials or 
+                                supplies unless other arrangements in writing have been made with the Company covering the 
+                                goods ordered.<br/><br/>
+                                 
+                                16. Unless specifically noted hereon, qualification tests and any test data are not included in the selling 
+                                price. Qualification tests may be performed by the Company and test data supplied at the specific 
+                                request and expense of the Buyer.<br/><br/>
+                                 
+                                17. Unless otherwise specifically noted on the front of this document, payment terms are Net 30 Days. 
+                                All payments received beyond the stipulated payment terms will incur interest at the rate of 1.5% 
+                                per month. If Company shall at any time doubt Buyer’s financial responsibility, Company may 
+                                demand adequate assurance of due performance or decline to make any further shipments except 
+                                upon receipt of cash payment in advance or security. If Company demands adequate assurance of 
+                                due performance and the same is not forthcoming within ten (10) days after the date of Company’s 
+                                demand, Company may, at its option, (i) continue to defer further shipments under this order 
+                                and/or any other order from Buyer which has been accepted by Company until adequate assurance 
+                                is received, or (ii) cancel this order and/or other orders from Buyer which have been accepted by 
+                                Company and recover damages. If Buyer fails in any way to fulfil the terms and conditions herein, 
+                                Company may defer further shipments until such default is corrected or cancel this order and 
+                                recover damages. Company shall have a security interest in, and lien upon, any property of Buyer 
+                                in Company’s possession as security for the payment of any amounts owing to Company by Buyer. <br/><br/>
+
+                                18. INCOTERMS do not apply to this order between the parties and any interpretation of this order 
+                                shall be solely in accordance with the terms set forth herein. <br/><br/>
+
+                                19. Neither party may assign any of its rights or obligations hereunder without the prior written 
+                                consent of the other except that Company shall have the right to assign to any company with which 
+                                it is affiliated or to any corporation into which it shall be merged, with which it shall be 
+                                consolidated, or by which it, or all or substantially all of its assets, shall be acquired. 
+                                20. In the event that any portion hereof shall violate any applicable statute, ordinance, or rule of law, 
+                                such provision shall be ineffective to the extent of such violation without invalidating any other 
+                                provision hereof. This document and the sale of all goods shall be governed by and construed in 
+                                accordance with the laws of the State of California, USA. <br/><br/>
+
+                                21. The products produced by The Company are typically designed by The Company. As such, The 
+                                Company reserves the right to make design changes and to authorise concessions for all catalogue 
+                                and standard designs without customer notification. Customer approval will be sought on other 
+                                special, customer-specific designs when the change or concessions affects a form, fit or function 
+                                characteristic. When a customer contract provides for customer control of the design but also 
+                                allows the sub-contractor to request MRB authority from the customer, this statement is to be 
+                                considered as a formal request for such authority. 
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </apex:panelGroup>
+</apex:page>--->
