@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_Quantity</fullName>
+    <active>true</active>
+    <errorConditionFormula>(Quantity__c  &lt;= 0) || ( Quantity__c &gt; merchandise__r.Quantity__c )</errorConditionFormula>
+    <errorDisplayField>Quantity__c</errorDisplayField>
+    <errorMessage>You cann&apos;t order more item than are in stack</errorMessage>
+</ValidationRule>

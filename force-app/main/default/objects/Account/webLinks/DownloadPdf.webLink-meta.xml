@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DownloadPdf</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>DownloadPdf</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>ifrm = document.createElement(&quot;IFRAME&quot;); 
+ifrm.setAttribute(&quot;src&quot;, &quot;/apex/PDFdownload?pdf=true&amp;force_download=true&amp;filename=My Happy File&quot;); 
+ifrm.style.width = 0+&quot;px&quot;; 
+ifrm.style.height = 0+&quot;px&quot;; 
+document.body.appendChild(ifrm);</url>
+</WebLink>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>javascript</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>javascript</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/29.0/connection.js&quot;)}
+
+var connection = sforce.connection;
+var accId=&quot;{!Account.Id}&quot;;
+var qr=sforce.connection.query(&quot;Select Id,accountid,Title From contact where accountid=&apos;&quot; + &quot;{!Account.Id}&quot;+ &quot;&apos;&quot;);
+var rec=qr.getArray(&quot;records&quot;);
+alert(qr.size+ &apos;  &apos;+ qr.records.length);
+for (var i=0;i&lt;qr.records.length;i++)
+{
+  alert(qr.records[i].Id);
+}</url>
+</WebLink>

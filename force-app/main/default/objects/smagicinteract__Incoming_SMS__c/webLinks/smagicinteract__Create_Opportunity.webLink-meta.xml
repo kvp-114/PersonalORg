@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>smagicinteract__Create_Opportunity</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Create Opportunity</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/connection.js&quot;)} 
+
+var packagePrefix = &quot;smagicinteract__&quot;; 
+var records = {!GETRECORDIDS($ObjectType.smagicinteract__Incoming_SMS__c)}; 
+if (records[0] == null) 
+{ 
+alert(&quot;Please select at least one Record&quot;); 
+} 
+else{ 
+var action = &quot;Create Opportunity&quot;; 
+var recordIds = &quot;&quot;; 
+for (var n in records) { 
+if(n == &apos;remove&apos; || n == &apos;indexOf&apos;) continue; 
+recordIds = recordIds + records[n]; 
+
+if (n != records.length-1) { 
+recordIds = recordIds + &quot;,&quot;; 
+} 
+} 
+var queryString = parent.window.location.pathname; 
+if (parent.window.location.search){ 
+queryString = queryString + parent.window.location.search 
+} 
+
+var url = &quot;/apex/&quot;+packagePrefix+&quot;LookupConfigAction?retURL=&quot;+queryString + &quot;&amp;action=&quot;+action+&quot;&amp;recordIds=&quot;+ recordIds; 
+
+parent.window.location = url; 
+}</url>
+</WebLink>
