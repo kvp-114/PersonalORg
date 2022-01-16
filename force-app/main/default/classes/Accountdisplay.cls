@@ -2,7 +2,8 @@ public class Accountdisplay{
 public Account  acc{get;set;}
 public String save{get;set;}
 public String display{get;set;}
-    public Accountdisplay(){
+//Account display method    
+public Accountdisplay(){
     save='True';
     display='False';
      acc=new Account();
